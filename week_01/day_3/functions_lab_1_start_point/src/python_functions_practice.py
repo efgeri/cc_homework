@@ -51,5 +51,13 @@ def cube_volume(side):
 def reverse_string(string):
     return string[::-1]
 
+# Jasper's solution, pretty nice
+# def reverse_string(string):
+    # new_string = ""
+    # for char in string:
+    #     new_string = char + new_string
+    # return new_string
+
+
 def convert_fahrenheit(fahrenheit):
     return (fahrenheit-32) * 5 / 9
