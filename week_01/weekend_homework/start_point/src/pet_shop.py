@@ -7,14 +7,14 @@ def get_total_cash(shop):
 
 def add_or_remove_cash(shop, amount):
     shop["admin"]["total_cash"] += amount
-    return get_total_cash(shop)
+    # return get_total_cash(shop)  This line is not needed, because this function doesn't have to return anything.
 
 def get_pets_sold(shop):
     return shop["admin"]["pets_sold"]
 
 def increase_pets_sold(shop, sold):
     shop["admin"]["pets_sold"] += sold
-    return get_pets_sold(shop)
+    # return get_pets_sold(shop)   This is not needed for the same reason as above
 
 def get_stock_count(shop):
     return len(shop["pets"])
@@ -44,7 +44,7 @@ def get_customer_cash(customer):
 
 def remove_customer_cash(customer, amount):
     customer["cash"] -= amount
-    return get_customer_cash(customer)
+    # return get_customer_cash(customer)  Same as return lines above
 
 def get_customer_pet_count(customer):
     return len(customer["pets"])
@@ -57,6 +57,8 @@ def customer_can_afford_pet(customer, new_pet):
     if customer["cash"] >= new_pet["price"]:
         can_afford = True
     return can_afford
+
+# alteratively: return customer["cash"] >= pet["price"]
 
 def sell_pet_to_customer(shop, new_pet, customer):
     if new_pet != None:
