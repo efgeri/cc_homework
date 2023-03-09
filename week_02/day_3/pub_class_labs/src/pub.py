@@ -21,8 +21,8 @@ class Pub:
             if drink.name == name_drink:
                 return drink.alcohol_level
             
-    def purchase(self, drink_name, customer):
+    def purchase(self, product_name, customer):
         if customer.age >=18 and customer.drunkenness < 10:
-            customer.decrease_wallet(self.check_price(drink_name))
-            self.increase_till(self.check_price(drink_name))
-            customer.increase_drunkenness(self.check_alcohol(drink_name))
+            customer.decrease_wallet(self.check_price(product_name))
+            self.increase_till(self.check_price(product_name))
+            customer.increase_drunkenness(self.check_alcohol(product_name))
