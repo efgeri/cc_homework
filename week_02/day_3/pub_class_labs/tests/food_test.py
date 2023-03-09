@@ -9,4 +9,4 @@ class TestDrink(unittest.TestCase):
         self.customer = Customer("Roland", 18, 20)
         self.customer.drunkenness = 9
 
-    def test_rejuvenation_level
+    # def test_rejuvenation_level
