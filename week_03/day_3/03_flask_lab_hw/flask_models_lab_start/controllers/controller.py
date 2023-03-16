@@ -4,7 +4,7 @@ from models.order_list import *
 from app import app
 # from models.something
 
-@app.route('/')
+@app.route('/orders')
 def index():
     return render_template('index.html', orders = enumerate(order_list))
 
