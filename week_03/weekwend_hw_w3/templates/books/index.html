@@ -9,8 +9,9 @@
 <body>
     {% for book in books %}
         <div>
-            <a href="/books/{{books.index(book)}}">  {{ book.title }} {{ book.author }} {{ book.genre }} </a>
+            <a href="/books/{{books.index(book)}}">  {{ book.title }} {{ book.author }} {{ book.genre }} </a>            
         </div>
     {% endfor %}
+
 </body>
 </html>

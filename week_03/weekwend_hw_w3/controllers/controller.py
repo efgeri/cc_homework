@@ -2,7 +2,7 @@ from flask import redirect, request, render_template
 
 from app import app
 from models.book import Book
-from models.book import book_list 
+from models.book_list import book_list, add_book
 # add_book, delete_book
 
 
@@ -22,19 +22,19 @@ def books_show(index):
     return render_template("books/show.html", book=book, index=index)
 
 
-# @app.route("/books", methods=["POST"])
-# def books_create():
-#     title = request.form["title"]
-#     author = request.form["author"]
-#     genre = request.form["genre"]
-#     new_book = Book(title, author, genre, False)
-#     add_book(new_book)
-#     return redirect("/books")
+@app.route("/books", methods=["POST"])
+def books_create():
+    title = request.form["title"]
+    author = request.form["author"]
+    genre = request.form["genre"]
+    new_book = Book(title, author, genre, False)
+    add_book(new_book)
+    return redirect("/books")
 
 
-# @app.route("/books/new")
-# def books_new():
-#     return render_template("books/new.html")
+@app.route("/books/new")
+def books_new():
+    return render_template("books/new.html")
 
 
 # @app.route("/books/delete/<index>", methods=["POST"])
