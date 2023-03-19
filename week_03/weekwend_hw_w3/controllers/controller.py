@@ -2,8 +2,7 @@ from flask import redirect, request, render_template
 
 from app import app
 from models.book import Book
-from models.book_list import book_list, add_book
-# add_book, delete_book
+from models.book_list import book_list, add_book, delete_book
 
 
 @app.route("/")
@@ -37,15 +36,15 @@ def books_new():
     return render_template("books/new.html")
 
 
-# @app.route("/books/delete/<index>", methods=["POST"])
-# def books_delete(index):
-#     delete_book(int(index))
-#     return redirect("/books")
+@app.route("/books/delete/<index>")
+def books_delete(index):
+    delete_book(int(index))
+    return redirect("/books")
 
 
-# @app.route("/books/<index>", methods=["POST"])
-# def books_update(index):
-#     book = books[int(index)]
-#     checked_out = "checked_out" in request.form
-#     book.toggle_check_out(checked_out)
-#     return redirect("/books/" + index)
+@app.route("/books/<index>", methods=["POST"])
+def books_update(index):
+    book = book_list[int(index)]
+    checked_out = "checked_out" in request.form
+    book.toggle_check_out(checked_out)
+    return redirect("/books/" + index)

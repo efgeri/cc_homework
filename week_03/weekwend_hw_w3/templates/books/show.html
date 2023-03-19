@@ -1,12 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     {{ book.title }} {{ book.author }} {{ book.genre }}
-</body>
+    {% if book.checked_out %}
+        Checked
+    {% endif %}
+    <form action="/books/{{ index }}" method="post">
+      <input type="checkbox" id="checked_out" name="checked_out" value="{{book.checked_out}}" />
+      <label for="checked_out"> Checked?</label><br />
+      <input type="submit" value="Submit">
+    </form>
+  </body>
 </html>
