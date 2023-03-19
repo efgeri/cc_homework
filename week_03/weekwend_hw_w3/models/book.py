@@ -8,4 +8,7 @@ class Book:
     def toggle_check_out(self, checked_out):
         if checked_out == True:
             self.checked_out = True
-        else: self.checked_out = False
+
+    def toggle_check_in(self, checked_out):
+        if checked_out == True:
+            self.checked_out = False

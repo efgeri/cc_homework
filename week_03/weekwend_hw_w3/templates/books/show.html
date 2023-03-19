@@ -1,3 +1,4 @@
+{% extends "base.html" %} {% block content %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -7,14 +8,32 @@
     <title>Document</title>
   </head>
   <body>
-    {{ book.title }} {{ book.author }} {{ book.genre }}
-    {% if book.checked_out %}
-        Checked
-    {% endif %}
+    {{ book.title }} {{ book.author }} {{ book.genre }} {% if book.checked_out
+    %} Checked {% endif %} {% if book.checked_out %}
     <form action="/books/{{ index }}" method="post">
-      <input type="checkbox" id="checked_out" name="checked_out" value="{{book.checked_out}}" />
-      <label for="checked_out"> Checked?</label><br />
-      <input type="submit" value="Submit">
+      <input
+        type="checkbox"
+        id="checked_out"
+        name="checked_out"
+        value="True"
+      />
+      <label for="checked_out"> Check in</label><br />
+      <input type="submit" value="Submit" />
     </form>
+
+    {% else %}
+    <form action="/books/{{ index }}" method="post">
+      <input
+        type="checkbox"
+        id="checked_out"
+        name="checked_out"
+        value="True"
+      />
+      <label for="checked_out"> Check out</label><br />
+      <input id="submit" type="submit" value="Submit" />
+    </form>
+
+    {% endif %}
   </body>
 </html>
+{% endblock %}

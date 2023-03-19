@@ -45,6 +45,37 @@ def books_delete(index):
 @app.route("/books/<index>", methods=["POST"])
 def books_update(index):
     book = book_list[int(index)]
-    checked_out = "checked_out" in request.form
-    book.toggle_check_out(checked_out)
+    if book.checked_out:
+        if "checked_out" in request.form:
+            checked_out = bool(request.form["checked_out"])
+            book.toggle_check_in(checked_out)
+        else:
+            return redirect("/books/" + index)
+    else:
+        if "checked_out" in request.form:
+            checked_out = bool(request.form["checked_out"])
+            book.toggle_check_out(checked_out)
+        else:
+            return redirect("/books/" + index)
+
     return redirect("/books/" + index)
+
+
+# Just a little note for the above route:
+# Here's the code snippet originally posted for this route:
+
+# @app.route("/books/<index>", methods=["POST"])
+# def books_update(index):
+#     book = books[int(index)]
+#     checked_out = "checked_out" in request.form
+#     book.toggle_check_out(checked_out)
+#     return redirect("/books/" + index)
+
+# Provided that the Pyhton method and the html side is written, this code will check out a book if the checkbox is checked,
+# and check it back in if it's unchecked. My initial thought was to make the checkbox do the appropriate thing when checked
+# (namely that if it's in, it should check it out and vice versa), and
+# nothing if it's unchecked, since it's a more realistic use.
+# I have misunderstood the above example code, I thought True or False value can actually be passed by the
+# HTML form. In reality, this example above checks, if ANY checked_out value were passed on, and triggers the book class method for checking in.
+# This took me a while to realise unfortunately, but when I did, I wanted to make a point that it's possible to do what I originally wanted.
+# The resulting code is a bit hard to read, and it's possibly not the best implementation, I imagine there are better ways of doing this.
