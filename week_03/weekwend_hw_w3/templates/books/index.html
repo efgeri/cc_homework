@@ -4,8 +4,9 @@
     {% for book in books %}
     <div>
       <a href="/books/{{books.index(book)}}">
-        {{ book.title }} {{ book.author }} {{ book.genre }}
-      </a>
+       <ul> <li>{{ book.title }}</li></a> <li>{{ book.author }}</li> <li>{{ book.genre }}</li>
+    </ul>
+      
       <a href="/books/delete/{{books.index(book)}}">
         <button type="button">Delete</button>
       </a>

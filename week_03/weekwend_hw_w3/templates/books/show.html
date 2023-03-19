@@ -8,27 +8,22 @@
     <title>Document</title>
   </head>
   <body>
-    {{ book.title }} {{ book.author }} {{ book.genre }} {% if book.checked_out
-    %} Checked {% endif %} {% if book.checked_out %}
+    <ul>
+      <li>{{ book.title }}</li>
+      <li>{{ book.author }}</li>
+      <li>{{ book.genre }}</li>
+    </ul>
+    {% if book.checked_out %} This book is currently not in {% endif %} {% if book.checked_out %}
     <form action="/books/{{ index }}" method="post">
-      <input
-        type="checkbox"
-        id="checked_out"
-        name="checked_out"
-        value="True"
-      />
-      <label for="checked_out"> Check in</label><br />
-      <input type="submit" value="Submit" />
+      <input type="checkbox" id="checked_out" name="checked_out" value="True" />
+      <label for="checked_out"> Check back in</label><br />
+      <input id="submit" type="submit" value="Submit" />
     </form>
 
     {% else %}
+    {% if book.checked_out == False %} This book available {% endif %}
     <form action="/books/{{ index }}" method="post">
-      <input
-        type="checkbox"
-        id="checked_out"
-        name="checked_out"
-        value="True"
-      />
+      <input type="checkbox" id="checked_out" name="checked_out" value="True" />
       <label for="checked_out"> Check out</label><br />
       <input id="submit" type="submit" value="Submit" />
     </form>
