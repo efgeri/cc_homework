@@ -5,7 +5,13 @@
     {% for book in books %}
     <div>
       <a href="/books/{{books.index(book)}}">
-       <ul class="cards"> <li>{{ book.title }}</li></a> <li>{{ book.author }}</li> <li>{{ book.genre }}</li> <li><a href="/books/delete/{{books.index(book)}}">
+       <ul class="cards"> <li>{{ book.title }}</li></a> <li>{{ book.author }}</li> <li>{{ book.genre }}</li> 
+        <li> {% if book.checked_out %}
+          It's not in &#10060;
+        {% else %}
+          Available &#9989;
+        {% endif %}</li>
+        <li><a href="/books/delete/{{books.index(book)}}">
         <button type="button">Delete</button>
       </a>
     </li>
