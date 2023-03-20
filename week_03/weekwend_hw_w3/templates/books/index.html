@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
   <body>
+    <section class="cards">
     {% for book in books %}
     <div>
       <a href="/books/{{books.index(book)}}">
@@ -12,9 +13,11 @@
       </a>
     </div>
     {% endfor %}
-    <p>
-      <a href="/books/new"> <button type="button">Add new</button> </a>
-    </p>
+    
+</section>
+<p>
+    <a href="/books/new"> <button type="button">Add new</button> </a>
+  </p>
   </body>
 </html>
 {% endblock %}

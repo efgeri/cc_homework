@@ -13,3 +13,11 @@ class TestBook(unittest.TestCase):
 
     def test_book_has_genre(self):
         self.assertEqual(self.book1.genre, "crime")
+
+    def test_check_out(self):
+        self.book1.toggle_check_out(True)
+        self.assertEqual(self.book1.checked_out, True)
+
+    def test_check_in(self):
+        self.book1.toggle_check_in(True)
+        self.assertEqual(self.book1.checked_out, False)

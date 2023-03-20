@@ -21,7 +21,7 @@
     </form>
 
     {% else %}
-    {% if book.checked_out == False %} This book available {% endif %}
+    {% if book.checked_out == False %} This book is available {% endif %}
     <form action="/books/{{ index }}" method="post">
       <input type="checkbox" id="checked_out" name="checked_out" value="True" />
       <label for="checked_out"> Check out</label><br />
