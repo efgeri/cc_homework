@@ -22,7 +22,7 @@ h1 {
     text-align: center;
     padding: 50px 70px;
     text-decoration: none;
-    font-size: 17px;
+    font-size: 32px;
   }
   
   .topnav a:hover {
@@ -41,19 +41,37 @@ h1 {
     list-style-type: none;
   }
 
+  ul a {
+    text-decoration: none;
+    color: #e81212;
+  }
+
+
   .new_book {
     display: flex;
     flex-direction: column;
     width:fit-content;
     align-content: center;
+   
     
   }
 
   .cards {
-    display: flex;
-    justify-content: space-around;
-    border-style: groove;
+
+    border-radius: 10px;
+    border-style:groove;
     border-color: #333;
+    padding: 15px;
+  }
+
+  .topcards {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  .book_view {
+    display: flex;  
+    justify-content:space-evenly;
   }
 
   #checked_out {

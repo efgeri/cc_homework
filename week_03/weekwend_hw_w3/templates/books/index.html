@@ -1,23 +1,22 @@
 {% extends "base.html" %}
 {% block content %}
   <body>
-    <section class="cards">
+    <section class="topcards">
     {% for book in books %}
     <div>
       <a href="/books/{{books.index(book)}}">
-       <ul> <li>{{ book.title }}</li></a> <li>{{ book.author }}</li> <li>{{ book.genre }}</li>
-    </ul>
-      
-      <a href="/books/delete/{{books.index(book)}}">
+       <ul class="cards"> <li>{{ book.title }}</li></a> <li>{{ book.author }}</li> <li>{{ book.genre }}</li> <li><a href="/books/delete/{{books.index(book)}}">
         <button type="button">Delete</button>
       </a>
+    </li>
+    </ul>
+      
+      
     </div>
     {% endfor %}
     
 </section>
-<p>
-    <a href="/books/new"> <button type="button">Add new</button> </a>
-  </p>
+
   </body>
 </html>
 {% endblock %}
