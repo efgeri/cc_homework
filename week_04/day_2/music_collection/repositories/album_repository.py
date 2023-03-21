@@ -1,7 +1,6 @@
 from db.run_sql import run_sql
 from models.album import Album
 from models.artist import Artist
-import pdb
 
 def save(album):
     sql = "INSERT INTO albums (title, genre, tracks, artist_id) VALUES (%s, %s, %s, %s) RETURNING *"
@@ -11,3 +10,7 @@ def save(album):
     id = results[0]['id']
     album.id = id
     return album
+
+def delete_all():
+    sql = "DELETE  FROM albums"
+    run_sql(sql)
