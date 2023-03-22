@@ -4,20 +4,23 @@
 
 <div class="book">
     <div class="content">
+      <div class="name">
       {{selected_book.author.first_name}} {{selected_book.author.last_name}}
+    </div>
       <div class="title">
         {{selected_book.title}}
         {{selected_book.genre}}
-        <span class="genre">{{selected_book.year}}</span>
       </div>
+      <span class="year">{{selected_book.year}}</span>
       <!-- <div class="buttons">
         {% if selected_book.completed == True %}
           <i class="fa fa-check fa-2x" style="color:green" aria-hidden="true"></i>
         {% else %}
           <i class="fa fa-times fa-2x" aria-hidden="true"></i>
         {% endif %} -->
+      <!-- </div> -->
         <p><a href="/books/{{ selected_book.id }}/edit">Edit</a></p>
-      </div>
+      
       <p>      <form class="delete-form" action="/books/{{selected_book.id}}/delete" method="POST">
         <button class="trash-button"><i class="fa fa-trash-o fa-3x" style="color:red" aria-hidden="true"></i></button>
       </form></p>

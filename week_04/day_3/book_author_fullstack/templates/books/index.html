@@ -4,12 +4,14 @@
 {% for book in all_books %}
   <div class="book">
     <div class="content">
+      <div class="name">
       {{book.author.first_name}} {{book.author.last_name}}
+    </div>
       <div class="title">
-        <a href="/books/{{ book.id }}">{{book.title}}</a>
-        {{ book.genre }}
-        <span class="year">{{book.year}}</span>
+        <a href="/books/{{ book.id }}">{{book.title}}</a>        
       </div>
+      {{ book.genre }}
+        <span class="year">{{book.year}}</span>
       <!-- <div class="buttons">
         {% if book.completed == True %}
           <i class="fa fa-check fa-2x" style="color:green" aria-hidden="true"></i>

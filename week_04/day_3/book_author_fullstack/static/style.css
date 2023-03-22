@@ -2,7 +2,7 @@ body{
   font-family: "Helvetica", arial, sans-serif; font-size: 16px;
 }
 
-.task {
+.book {
   border: 1px solid #ccc;
   width: 300px;
   min-height: 68px;
@@ -14,15 +14,17 @@ body{
 
 .name {
   font-weight: bold;
+  margin-left: 20px;
   margin-bottom: 0.5em;
   margin-right: 0.3em;
 }
 
-.duration{
+.title {
   color: #8899a6;
-  font-size: 13px;
-  margin-left: 20px;
-}
+  font-size: 18px;
+
+  padding-bottom: 10px;
+} 
 
 .buttons {
   margin-top: 10px;
