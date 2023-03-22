@@ -20,10 +20,10 @@ album_repo.save(album2)
 album3 = Album("evermore", "Pop", 15, artist2)
 album_repo.save(album3)
 
-selected_artist = art_repo.select(1)
+selected_artist = art_repo.select(artist1.id)
 print (f"The selected artists's name is: {selected_artist.first_name} {selected_artist.last_name}")
 
-selected_album = album_repo.select(1)
+selected_album = album_repo.select(album2.id)
 print(f"The selected album title is:{selected_album.title}, which is {selected_album.genre} genre, has {selected_album.tracks} tracks on it, artist no.:{selected_album.artist.id}")
 
 artist_list = art_repo.select_all()
@@ -44,3 +44,4 @@ art_repo.update(artist2)
 
 album2.title = "Daylights"
 album_repo.update(album2)
+
