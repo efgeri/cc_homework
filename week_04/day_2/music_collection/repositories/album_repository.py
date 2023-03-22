@@ -32,6 +32,7 @@ def select_all():
     sql = "SELECT * FROM albums"
     results = run_sql(sql)
     for row in results:
+        # get the artist object from this album
         artist = art_repo.select(row['artist_id'])
         album = Album(row['title'], row['genre'], row['tracks'], artist, row['id'])
         albums.append(album)

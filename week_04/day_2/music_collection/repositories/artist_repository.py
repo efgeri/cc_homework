@@ -31,6 +31,7 @@ def select_all():
     sql = "SELECT * FROM artists"
     # send my SQL to run_sql
     results = run_sql(sql)
+    # translate dictionaries into objects
     for row in results:
         artist = Artist(row['first_name'], row['last_name'], row['id'])
         artists.append(artist)
