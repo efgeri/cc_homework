@@ -25,15 +25,24 @@ def select(id):
     return artist
 
 def select_all():
+    # setup an empty list to be returned
     artists = []
+    # create a string of SQL
     sql = "SELECT * FROM artists"
+    # send my SQL to run_sql
     results = run_sql(sql)
     for row in results:
         artist = Artist(row['first_name'], row['last_name'], row['id'])
         artists.append(artist)
+    # return the list
     return artists
 
 def update(artist):
     sql = "UPDATE artists SET (first_name, last_name) = (%s, %s) WHERE id = %s"
     values = [artist.first_name, artist.last_name, artist.id]
+    run_sql(sql, values)
+
+def delete(id):
+    sql = "DELETE  FROM artists WHERE id = %s"
+    values = [id]
     run_sql(sql, values)

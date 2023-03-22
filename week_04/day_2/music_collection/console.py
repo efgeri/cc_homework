@@ -45,3 +45,5 @@ art_repo.update(artist2)
 album2.title = "Daylights"
 album_repo.update(album2)
 
+art_repo.delete(artist2.id)
+album_repo.delete(album3.id)
