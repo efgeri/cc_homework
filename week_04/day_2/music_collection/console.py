@@ -41,3 +41,6 @@ for album in taylor_albums:
 artist2.first_name = "Taylorino"
 artist2.last_name = "Swift"
 art_repo.update(artist2)
+
+album2.title = "Daylights"
+album_repo.update(album2)
