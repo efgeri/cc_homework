@@ -36,4 +36,8 @@ for album in album_list:
 
 taylor_albums = album_repo.album_by_artist(artist2)
 for album in taylor_albums:
-    print(f"Taylor has {len(taylor_albums)} albums. The album title is: {album.title}, which is {album.genre} genre, has {album.tracks} tracks on it, artist no.:{album.artist.id}")
+    print(f"{album.artist.first_name} has {len(taylor_albums)} albums. The album title is: {album.title}, which is {album.genre} genre, has {album.tracks} tracks on it, artist no.:{album.artist.id}")
+
+artist2.first_name = "Taylorino"
+artist2.last_name = "Swift"
+art_repo.update(artist2)
