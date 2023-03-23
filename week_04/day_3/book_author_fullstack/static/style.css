@@ -2,6 +2,11 @@ body{
   font-family: "Helvetica", arial, sans-serif; font-size: 16px;
 }
 
+/* .book_list{
+  display: flex;
+  flex-direction: row;
+} */
+
 .book {
   border: 1px solid #ccc;
   width: 300px;
