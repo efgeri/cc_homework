@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Visits</h1>
+
+<p class="btn--wrapper">
+  <a class="btn btn--action" href="/users/{{ user.id }}/visits/new">New visit</a>
+</p>
+
+<ul>
+  {% for visit in all_visits %}
+  <li>
+  <p><a href="/users/{{ user.id }}/visits/{{ visit.id }}/edit">{{ visit.city.name }}</a></p>
+    <p>
+      <form action="/visits/{{ visit.id }}/delete" method="POST">
+        <input type="submit" value="delete" />
+      </form>
+    </p>
+  </li>
+  {% endfor %}
+</ul>
+
+
+{% endblock %}

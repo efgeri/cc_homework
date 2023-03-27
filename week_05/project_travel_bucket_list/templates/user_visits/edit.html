@@ -2,9 +2,13 @@
 
 {% block content %}
 <h1>Edit a Visit</h1>
+<ul>
+  <li><h2>{{ user.name }}</h2></li>
+  <li><h3>{{ user.username }}</h3></li>
+</ul>
 
-<form action="/visits/{{ visit.id }}" method="post">
-  <label for="user">Select a user:</label>
+<form action="/users/{{ user.id }}/visits/{{ visit.id }}" method="post">
+  <!-- <label for="user">Select a user:</label>
     <select name="user_id" id="user">
       {% for user in all_users %}
       <option value="{{ user.id }}"
@@ -12,7 +16,7 @@
       {{ user.name }}
     </option>
       {% endfor %}
-    </select>
+    </select> -->
   
   <label for="location">Select a city:</label>
     <select name="city_id" id="city">
