@@ -137,7 +137,7 @@ user_repo.update(user2)
 
 # user_repo.delete(user3.id)
 
-user_visits = user_repo.visited_cities(user1)
+user_visits = user_repo.visited_cities(user1.id)
 print(f"{user1.username} has visited {len(user_visits)} cities. The list is:")
 for visit in user_visits:
     print(f"{visit.name}")

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Continents</h1>
+
+<p class="btn--wrapper">
+  <a class="btn btn--action" href="/continents/new">New continent</a>
+</p>
+
+<ul>
+  {% for continent in all_continents %}
+  <li>
+  <p><a href="/continents/{{ continent.id }}/edit">{{ continent.name }}</a></p>
+    <p>
+      <form action="/continents/{{ continent.id }}/delete" method="POST">
+        <input type="submit" value="delete" />
+      </form>
+    </p>
+  </li>
+  {% endfor %}
+</ul>
+
+
+{% endblock %}

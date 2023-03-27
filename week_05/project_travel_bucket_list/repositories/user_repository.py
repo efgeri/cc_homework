@@ -39,11 +39,11 @@ def delete(id):
     values = [id]
     run_sql(sql, values)
 
-def visited_cities(user):
+def visited_cities(id):
     cities = []
 
     sql = "SELECT cities.* FROM cities INNER JOIN visits ON visits.city_id = cities.id WHERE user_id = %s"
-    values = [user.id]
+    values = [id]
     results = run_sql(sql, values)
 
     for row in results:

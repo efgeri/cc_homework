@@ -6,6 +6,7 @@ from models.user import User
 import repositories.user_repository as user_repository
 import repositories.city_repository as city_repository
 import repositories.country_repository as country_repository
+import pdb
 
 def save(visit):
     sql = "INSERT INTO visits ( user_id, city_id ) VALUES ( %s, %s ) RETURNING id"
@@ -38,6 +39,19 @@ def select(id):
         city = city_repository.select(result['city_id'])
         visit = Visit(user, city, result['id'])
     return visit
+
+def select_by_user(id):
+    visits = []
+    sql = "SELECT * FROM visits WHERE user_id = %s"
+    values = [id]
+    results = run_sql(sql, values)
+    # pdb.set_trace()
+    for row in results:
+        user = user_repository.select(row['user_id'])
+        city = city_repository.select(row['city_id'])
+        visit = Visit(user, city, row['id'])
+        visits.append(visit)
+    return visits
 
 def city(visit):
     sql = "SELECT * FROM cities WHERE id = %s"
