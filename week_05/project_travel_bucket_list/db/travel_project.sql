@@ -27,8 +27,8 @@ CREATE TABLE cities (
 CREATE TABLE sights (
   id SERIAL PRIMARY KEY,
   name VARCHAR(255),
-  visit_date VARCHAR(255),
   visited BOOLEAN,
+  visit_date VARCHAR(255),
   city_id INT NOT NULL REFERENCES cities(id) ON DELETE CASCADE
 );
 
