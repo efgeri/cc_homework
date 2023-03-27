@@ -11,13 +11,10 @@ from flask import Blueprint
 
 user_visits_blueprint = Blueprint("user_visits", __name__)
 
-# RESTful CRUD Routes
-
-@user_visits_blueprint.route("/users")
-
+# RESTful CRUD Routes  
 
 @user_visits_blueprint.route("/users/<id>/visits")
-def visits(id):
+def user_visits(id):
     visits = visit_repo.select_by_user(id)
     # pdb.set_trace()
     return render_template("visits/index.html", all_visits = visits)
