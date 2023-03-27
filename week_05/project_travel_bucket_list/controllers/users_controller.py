@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, Blueprint
 from models.user import User
 import pdb
 
@@ -6,8 +6,6 @@ import repositories.continent_repository as continent_repo
 import repositories.user_repository as user_repo
 import repositories.city_repository as city_repo
 
-
-from flask import Blueprint
 
 users_blueprint = Blueprint("users", __name__)
 
@@ -36,18 +34,14 @@ def create_user():
 
 @users_blueprint.route("/users/<id>/edit")
 def edit_user(id):
-    user = user_repo.select(id)
-    users = user_repo.select_all()
-    cities = city_repo.select_all()
-    return render_template("users/edit.html", user = user, all_users = users, all_cities = cities)
+    selected_user = user_repo.select(id)
+    return render_template("users/edit.html", user = selected_user)
 
 @users_blueprint.route("/users/<id>", methods=['POST'])
 def update_user(id):
-    user_id = request.form['user_id']
-    city_id = request.form['city_id']
-    user = user_repo.select(user_id)
-    city = city_repo.select(city_id)
-    user = user(user, city, id)
+    username = request.form['username']
+    user_fullname = request.form['name']
+    user = User(username, user_fullname, id)
     # pdb.set_trace()
     user_repo.update(user)
     return redirect('/users')
