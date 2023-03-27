@@ -1,10 +1,12 @@
 from models.continent import Continent
 from models.country import Country
 from models.city import City
+from models.user import User
 
 import repositories.continent_repository as continent_repo
 import repositories.country_repository as country_repo
 import repositories.city_repository as city_repo
+import repositories.user_repository as user_repo
 
 continent_repo.delete_all()
 country_repo.delete_all()
@@ -13,6 +15,7 @@ city_repo.delete_all
 continent1 = Continent("Africa")
 continent2 = Continent("Europe")
 continent3 = Continent("Asia")
+
 
 country1 = Country("Egypt", continent1)
 country2 = Country("Congo", continent1)
@@ -28,6 +31,10 @@ city1 = City("Budapest", False, country4)
 city2 = City("Beijing", True, country8, "07/09/2012")
 city3 = City("Paris", False, country6)
 city4 = City("Brussels", False, country5)
+
+user1 = User("efgeri", "Gergely Farkas")
+user2 = User("Visitor 1", "John Doe")
+user3 = User("Visitor 2", "Jane Doe")
 
 continent_repo.save(continent1)
 continent_repo.save(continent2)
@@ -47,6 +54,10 @@ city_repo.save(city1)
 city_repo.save(city2)
 city_repo.save(city3)
 city_repo.save(city4)
+
+user_repo.save(user1)
+user_repo.save(user2)
+user_repo.save(user3)
 
 selected_continent = continent_repo.select(continent1.id)
 print (f"The selected continent's name is: {selected_continent.name}")
@@ -91,9 +102,22 @@ city1.visit_date = "07/06/1997"
 city1.visited = True
 city_repo.update(city2)
 
-city_repo.delete(city4.id)
+# city_repo.delete(city4.id)
 
 french_cities = city_repo.cities_by_country(country6)
 print(f"{country6.name} has {len(french_cities)} cities in the database. The list is:")
 for city in french_cities:
     print(f"{city.name}")
+
+selected_user = user_repo.select(user1.id)
+print (f"The selected user's name is: {selected_user.name}")
+
+user_list = user_repo.select_all()
+print("Here's the current list of users in the datbase:")
+for user in user_list:
+    print(f"{user.username}")
+
+user2.username = "Traveller"
+user_repo.update(user2)
+
+user_repo.delete(user3.id)
