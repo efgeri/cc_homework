@@ -18,7 +18,6 @@ continents_blueprint = Blueprint("continents", __name__)
 @continents_blueprint.route("/continents")
 def continents():
     continents = continent_repo.select_all()
-    # pdb.set_trace()
     return render_template("continents/index.html", all_continents = continents)
 
 @continents_blueprint.route("/continents/new")
@@ -35,19 +34,13 @@ def create_continent():
 
 @continents_blueprint.route("/continents/<id>/edit")
 def edit_continent(id):
-    continent = continent_repo.select(id)
-    users = user_repo.select_all()
-    cities = city_repo.select_all()
-    return render_template("continents/edit.html", continent = continent, all_users = users, all_cities = cities)
+    selected_continent = continent_repo.select(id)
+    return render_template("continents/edit.html", continent = selected_continent)
 
 @continents_blueprint.route("/continents/<id>", methods=['POST'])
 def update_continent(id):
-    user_id = request.form['user_id']
-    city_id = request.form['city_id']
-    user = user_repo.select(user_id)
-    city = city_repo.select(city_id)
-    continent = continent(user, city, id)
-    # pdb.set_trace()
+    name = request.form['name']
+    continent = Continent(name, id)
     continent_repo.update(continent)
     return redirect('/continents')
 

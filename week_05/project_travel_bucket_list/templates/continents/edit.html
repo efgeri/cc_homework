@@ -1,29 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Edit a Visit</h1>
+<h1>Edit a continent</h1>
 
-<form action="/visits/{{ visit.id }}" method="post">
-  <label for="user">Select a user:</label>
-    <select name="user_id" id="user">
-      {% for user in all_users %}
-      <option value="{{ user.id }}"
-      {% if visit.user.id == user.id %} selected="selected"{% endif %}>
-      {{ user.name }}
-    </option>
-      {% endfor %}
-    </select>
-  
-  <label for="location">Select a city:</label>
-    <select name="city_id" id="city">
-      {% for city in all_cities %}
-      <option value="{{ city.id }}"
-        {% if visit.city.id == city.id %} selected="selected"{% endif %}>
-        {{ city.name }}
-      </option>
-      {% endfor %}
-    </select>
-  
+<form action="/continents/{{continent.id}}" method="post">
+  <div>
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" value="{{continent.name}}" required autofocus>
+  </div>
+
   <input type='submit' value="Edit">
 </form>
 
