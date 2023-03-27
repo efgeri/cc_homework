@@ -28,6 +28,16 @@ def select_all():
         visits.append(visit)
     return visits
 
+def select(id):
+    visit = None
+    sql = "SELECT * FROM visits WHERE id = %s"
+    values = [id]
+    result = run_sql(sql, values)[0]
+    if result is not None:
+        user = user_repository.select(result['user_id'])
+        city = city_repository.select(result['city_id'])
+        visit = Visit(user, city, result['id'])
+    return visit
 
 def city(visit):
     sql = "SELECT * FROM cities WHERE id = %s"
