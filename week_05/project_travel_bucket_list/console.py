@@ -142,6 +142,10 @@ print(f"{user1.username} has visited {len(user_visits)} cities. The list is:")
 for visit in user_visits:
     print(f"{visit.name}")
 
+city_visits = city_repo.visited_by_user(city1)
+print(f"{city1.name} has been visited by {len(user_visits)} two users. The list is:")
+for visit in city_visits:
+    print(f"{visit.username}")
 
 visit_list = visit_repo.select_all()
 print("Here's the current list of visits in the datbase:")
@@ -154,4 +158,4 @@ for visit in visit_list:
 visit4.user = user2
 visit_repo.update(visit4)
 
-visit_repo.delete(visit3.id)    
+# visit_repo.delete(visit3.id)    
