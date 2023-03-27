@@ -1,6 +1,9 @@
 from db.run_sql import run_sql
+import repositories.country_repository as country_repository
 
 from models.user import User
+from models.city import City
+
 
 def save(user):
     sql = "INSERT INTO users (username, name) VALUES ( %s, %s ) RETURNING id"
@@ -36,6 +39,19 @@ def delete(id):
     values = [id]
     run_sql(sql, values)
 
+def visited_cities(user):
+    cities = []
+
+    sql = "SELECT cities.* FROM cities INNER JOIN visits ON visits.city_id = cities.id WHERE user_id = %s"
+    values = [user.id]
+    results = run_sql(sql, values)
+
+    for row in results:
+        country = country_repository.select(row['country_id'])
+        city = City(row['name'], row['visit_date'], row['visited'], country, row['id'])
+        cities.append(city)
+
+    return cities
 
 def delete_all():
     sql = "DELETE FROM users"

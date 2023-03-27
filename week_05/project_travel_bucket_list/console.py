@@ -2,15 +2,20 @@ from models.continent import Continent
 from models.country import Country
 from models.city import City
 from models.user import User
+from models.visit import Visit
+# import pdb
 
 import repositories.continent_repository as continent_repo
 import repositories.country_repository as country_repo
 import repositories.city_repository as city_repo
 import repositories.user_repository as user_repo
+import repositories.visit_repository as visit_repo
 
 continent_repo.delete_all()
 country_repo.delete_all()
-city_repo.delete_all
+city_repo.delete_all()
+user_repo.delete_all()
+visit_repo.delete_all()
 
 continent1 = Continent("Africa")
 continent2 = Continent("Europe")
@@ -36,6 +41,11 @@ user1 = User("efgeri", "Gergely Farkas")
 user2 = User("Visitor 1", "John Doe")
 user3 = User("Visitor 2", "Jane Doe")
 
+visit1 = Visit(user1, city1)
+visit2 = Visit(user1, city2)
+visit3 = Visit(user2, city3)
+visit4 = Visit(user3, city1)
+
 continent_repo.save(continent1)
 continent_repo.save(continent2)
 continent_repo.save(continent3)
@@ -58,6 +68,11 @@ city_repo.save(city4)
 user_repo.save(user1)
 user_repo.save(user2)
 user_repo.save(user3)
+
+visit_repo.save(visit1)
+visit_repo.save(visit2)
+visit_repo.save(visit3)
+visit_repo.save(visit4)
 
 selected_continent = continent_repo.select(continent1.id)
 print (f"The selected continent's name is: {selected_continent.name}")
@@ -120,4 +135,23 @@ for user in user_list:
 user2.username = "Traveller"
 user_repo.update(user2)
 
-user_repo.delete(user3.id)
+# user_repo.delete(user3.id)
+
+user_visits = user_repo.visited_cities(user1)
+print(f"{user1.username} has visited {len(user_visits)} cities. The list is:")
+for visit in user_visits:
+    print(f"{visit.name}")
+
+
+visit_list = visit_repo.select_all()
+print("Here's the current list of visits in the datbase:")
+for visit in visit_list:
+    # pdb.set_trace()
+    user = user_repo.select(visit.user.id)
+    city = city_repo.select(visit.city.id)
+    print(f"{user.username} visited {city.name}")
+
+visit4.user = user2
+visit_repo.update(visit4)
+
+visit_repo.delete(visit3.id)    

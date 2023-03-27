@@ -39,7 +39,7 @@ CREATE TABLE users (
 );
 
 
-CREATE TABLE users_cities (
+CREATE TABLE visits (
   id SERIAL PRIMARY KEY,
   user_id INT REFERENCES users(id) ON DELETE CASCADE,
   city_id INT NOT NULL REFERENCES cities(id) ON DELETE CASCADE
