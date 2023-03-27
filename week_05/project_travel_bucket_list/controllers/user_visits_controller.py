@@ -51,7 +51,7 @@ def user_update_visit(user_id, visit_id):
     visit_repo.update(visit)
     return user_visits(user_id)
 
-@user_visits_blueprint.route("/visits/<id>/delete", methods=['POST'])
-def delete_visit(id):
-    visit_repo.delete(id)
-    return redirect('/visits')
+@user_visits_blueprint.route("/users/<user_id>/visits/<visit_id>/delete", methods=['POST'])
+def delete_visit(user_id, visit_id):
+    visit_repo.delete(visit_id)
+    return user_visits(user_id)

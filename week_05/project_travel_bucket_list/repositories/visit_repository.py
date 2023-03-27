@@ -42,7 +42,7 @@ def select(id):
 
 def select_by_user(id):
     visits = []
-    sql = "SELECT * FROM visits WHERE user_id = %s"
+    sql = "SELECT * FROM visits WHERE user_id = %s ORDER BY id ASC" 
     values = [id]
     results = run_sql(sql, values)
     # pdb.set_trace()

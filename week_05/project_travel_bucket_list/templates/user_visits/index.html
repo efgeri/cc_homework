@@ -12,7 +12,7 @@
   <li>
   <p><a href="/users/{{ user.id }}/visits/{{ visit.id }}/edit">{{ visit.city.name }}</a></p>
     <p>
-      <form action="/visits/{{ visit.id }}/delete" method="POST">
+      <form action="/users/{{ user.id }}/visits/{{ visit.id }}/delete" method="POST">
         <input type="submit" value="delete" />
       </form>
     </p>
