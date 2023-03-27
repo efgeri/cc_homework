@@ -3,6 +3,7 @@ import repositories.country_repository as country_repo
 # import pdb
 
 from models.city import City
+from models.user import User
 
 def save(city):
     sql = "INSERT INTO cities (name, visited, visit_date, country_id) VALUES ( %s, %s, %s, %s) RETURNING id"
@@ -61,3 +62,16 @@ def cities_by_country(country):
         city = City(row['name'], row['visit_date'], row['visited'], country, row['id'])
         cities.append(city)
     return cities
+
+def visited_by_user(city):
+    users = []
+
+    sql = "SELECT users.* FROM users INNER JOIN visits ON visits.user_id = users.id WHERE city_id = %s"
+    values = [city.id]
+    results = run_sql(sql, values)
+
+    for row in results:
+        user = User(row['username'], row['name'], row['id'] )
+        users.append(user)
+
+    return users
