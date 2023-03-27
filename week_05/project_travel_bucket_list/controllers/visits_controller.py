@@ -52,6 +52,7 @@ def update_visit(id):
     user = user_repo.select(user_id)
     city = city_repo.select(city_id)
     visit = Visit(user, city, id)
+    # pdb.set_trace()
     visit_repo.update(visit)
     return redirect('/visits')
 
