@@ -9,8 +9,8 @@ import repositories.country_repository as country_repository
 import pdb
 
 def save(visit):
-    sql = "INSERT INTO visits ( user_id, city_id ) VALUES ( %s, %s ) RETURNING id"
-    values = [visit.user.id, visit.city.id]
+    sql = "INSERT INTO visits ( user_id, city_id, visited, visit_date ) VALUES ( %s, %s ) RETURNING id"
+    values = [visit.user.id, visit.city.id, visit.visited, visit.visit_date]
     results = run_sql( sql, values )
     visit.id = results[0]['id']
     return visit

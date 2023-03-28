@@ -1,4 +1,4 @@
-DROP TABLE users_cities;
+DROP TABLE visits;
 DROP TABLE users;
 DROP TABLE sights;
 DROP TABLE cities;
@@ -19,8 +19,6 @@ CREATE TABLE countries (
 CREATE TABLE cities (
   id SERIAL PRIMARY KEY,
   name VARCHAR(255),
-  visited BOOLEAN,
-  visit_date DATE,
   country_id INT NOT NULL REFERENCES countries(id) ON DELETE CASCADE
 );
 
@@ -41,6 +39,8 @@ CREATE TABLE users (
 
 CREATE TABLE visits (
   id SERIAL PRIMARY KEY,
-  user_id INT REFERENCES users(id) ON DELETE CASCADE,
-  city_id INT NOT NULL REFERENCES cities(id) ON DELETE CASCADE
+  user_id INT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+  city_id INT NOT NULL REFERENCES cities(id) ON DELETE CASCADE,
+  visited BOOLEAN,
+  visit_date VARCHAR(255)
 );
