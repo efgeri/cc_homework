@@ -51,7 +51,6 @@ def update(country):
 
 def countries_by_continent(continent):
     countries = []
-
     sql = "SELECT * FROM countries WHERE continent_id = %s"
     values = [continent.id]
     results = run_sql(sql, values)

@@ -8,6 +8,8 @@
 </ul>
 
 <form action="/users/{{ user.id }}/visits/{{ visit.id }}" method="post">
+  <label for="visit_date">When did you visit?</label>
+<input type="date" id="visit_date" name="visit_date" value="{{visit.visit_date}}">
   <label for="country">Select a country:</label>
     <select name="country_id" id="country">
       {% for country in all_countries %}

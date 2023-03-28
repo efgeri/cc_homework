@@ -9,7 +9,6 @@ def save(city):
     sql = "INSERT INTO cities (name, country_id) VALUES ( %s, %s) RETURNING id"
     values = [city.name, city.country.id]
     results = run_sql( sql, values )
-    # pdb.set_trace()
     city.id = results[0]['id']
 
 
@@ -47,7 +46,7 @@ def delete_all():
     run_sql(sql)
 
 def update(city):
-    sql = "UPDATE cities SET (name, visit_date, visited, country_id) = (%s, %s) WHERE id = %s"
+    sql = "UPDATE cities SET (name, country_id) = (%s, %s) WHERE id = %s"
     values = [city.name, city.country.id, city.id]
     run_sql(sql, values)
 
