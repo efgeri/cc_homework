@@ -42,5 +42,5 @@ CREATE TABLE visits (
   user_id INT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
   city_id INT NOT NULL REFERENCES cities(id) ON DELETE CASCADE,
   visited BOOLEAN,
-  visit_date VARCHAR(255)
+  visit_date DATE
 );

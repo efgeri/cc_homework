@@ -9,7 +9,7 @@ import repositories.country_repository as country_repository
 import pdb
 
 def save(visit):
-    sql = "INSERT INTO visits ( user_id, city_id, visited, visit_date ) VALUES ( %s, %s ) RETURNING id"
+    sql = "INSERT INTO visits ( user_id, city_id, visited, visit_date ) VALUES ( %s, %s, %s, %s ) RETURNING id"
     values = [visit.user.id, visit.city.id, visit.visited, visit.visit_date]
     results = run_sql( sql, values )
     visit.id = results[0]['id']
@@ -25,7 +25,8 @@ def select_all():
     for row in results:
         user = user_repository.select(row['user_id'])
         city = city_repository.select(row['city_id'])
-        visit = Visit(user, city, row['id'])
+
+        visit = Visit(user, city, row['visited'], row['visit_date'], row['id'])
         visits.append(visit)
     return visits
 
@@ -37,7 +38,7 @@ def select(id):
     if result is not None:
         user = user_repository.select(result['user_id'])
         city = city_repository.select(result['city_id'])
-        visit = Visit(user, city, result['id'])
+        visit = Visit(user, city, result['visited'], result['visit_date'], result['id'])
     return visit
 
 def select_by_user(id):
@@ -49,7 +50,7 @@ def select_by_user(id):
     for row in results:
         user = user_repository.select(row['user_id'])
         city = city_repository.select(row['city_id'])
-        visit = Visit(user, city, row['id'])
+        visit = Visit(user, city, row['visited'], row['visit_date'], row['id'])
         visits.append(visit)
     return visits
 
@@ -58,7 +59,7 @@ def city(visit):
     values = [visit.city.id]
     country = country_repository.select(visit.city.country.id)
     results = run_sql(sql, values)[0]
-    city = City(results['name'], results['visit_date'], results['visited'], country, results['id'])
+    city = City(results['name'], country, results['id'])
     return city
 
 
@@ -70,8 +71,8 @@ def user(visit):
     return user
 
 def update(visit):
-    sql = "UPDATE visits SET ( user_id, city_id ) = (%s, %s) WHERE id = %s"
-    values = [visit.user.id, visit.city.id, visit.id]
+    sql = "UPDATE visits SET ( user_id, city_id, visited, visit_date ) = (%s, %s, %s, %s) WHERE id = %s"
+    values = [visit.user.id, visit.city.id, visit.visited, visit.visit_date, visit.id]
     run_sql(sql, values)
 
 def delete_all():

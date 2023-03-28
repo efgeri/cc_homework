@@ -6,8 +6,8 @@ from models.city import City
 from models.user import User
 
 def save(city):
-    sql = "INSERT INTO cities (name, visited, visit_date, country_id) VALUES ( %s, %s, %s, %s) RETURNING id"
-    values = [city.name, city.visited, city.visit_date, city.country.id]
+    sql = "INSERT INTO cities (name, country_id) VALUES ( %s, %s) RETURNING id"
+    values = [city.name, city.country.id]
     results = run_sql( sql, values )
     # pdb.set_trace()
     city.id = results[0]['id']
@@ -21,7 +21,7 @@ def select_all():
 
     for row in results:
         country = country_repo.select(row['country_id'])
-        city = City(row['name'], row['visited'], country, row['visit_date'], row['id'])
+        city = City(row['name'], country, row['id'])
         cities.append(city)
     return cities
 
@@ -33,7 +33,7 @@ def select(id):
     result = run_sql(sql, values)[0]
     if result is not None:
         country = country_repo.select(result['country_id'])
-        city = City(result['name'], result['visited'], country, result['visit_date'], result['id'])
+        city = City(result['name'], country, result['id'])
     return city
 
 def delete(id):
@@ -47,8 +47,8 @@ def delete_all():
     run_sql(sql)
 
 def update(city):
-    sql = "UPDATE cities SET (name, visit_date, visited, country_id) = (%s, %s, %s, %s) WHERE id = %s"
-    values = [city.name, city.visit_date, city.visited, city.country.id, city.id]
+    sql = "UPDATE cities SET (name, visit_date, visited, country_id) = (%s, %s) WHERE id = %s"
+    values = [city.name, city.country.id, city.id]
     run_sql(sql, values)
 
 def cities_by_country(country):
@@ -59,7 +59,7 @@ def cities_by_country(country):
     results = run_sql(sql, values)
 
     for row in results:
-        city = City(row['name'], row['visited'], country, row['visit_date'], row['id'])
+        city = City(row['name'], country, row['id'])
         cities.append(city)
     return cities
 

@@ -32,18 +32,18 @@ country7 = Country("Japan", continent3)
 country8 = Country("China", continent3)
 country9 = Country("South Korea", continent3)
 
-city1 = City("Budapest", False, country4)
-city2 = City("Beijing", True, country8, "07/09/2012")
-city3 = City("Paris", False, country6)
-city4 = City("Brussels", False, country5)
+city1 = City("Budapest", country4)
+city2 = City("Beijing", country8)
+city3 = City("Paris", country6)
+city4 = City("Brussels", country5)
 
 user1 = User("efgeri", "Gergely Farkas")
 user2 = User("Visitor 1", "John Doe")
 user3 = User("Visitor 2", "Jane Doe")
 
-visit1 = Visit(user1, city1)
+visit1 = Visit(user1, city1, True, "1997-10-07")
 visit2 = Visit(user1, city2)
-visit3 = Visit(user2, city3)
+visit3 = Visit(user2, city3, True, "2021-12-28")
 visit4 = Visit(user3, city1)
 
 continent_repo.save(continent1)
@@ -113,9 +113,7 @@ print("Here's the current list of cities in the datbase:")
 for city in city_list:
     print(f"{city.name}")
 
-city1.visit_date = "07/06/1997"
-city1.visited = True
-city_repo.update(city2)
+
 
 # city_repo.delete(city4.id)
 
@@ -155,6 +153,8 @@ for visit in visit_list:
     city = city_repo.select(visit.city.id)
     print(f"{user.username} visited {city.name}")
 
+visit4.visit_date = "07/06/2011"
+visit4.visited = True
 visit4.user = user2
 visit_repo.update(visit4)
 
