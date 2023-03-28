@@ -31,6 +31,10 @@ def user_new_visit(id):
     for country in all_countries:
         if country.name == "New country":
             country_repo.delete(country.id)
+    all_cities = city_repo.select_all()
+    for city in all_cities:
+        if city.name == "New city":
+            city_repo.delete(city.id)
     selected_user = user_repo.select(id)
     continents = continent_repo.select_all()
     return render_template("user_visits/new.html", user = selected_user, all_continents = continents)
@@ -69,7 +73,7 @@ def user_new_country(user_id, visit_id):
     user = user_repo.select(user_id)
     visit = visit_repo.select(visit_id)
     country = country_repo.select(visit.city.country.id)    
-    return render_template("user_visits/new_country.html", user = user, visit = visit, country = country)
+    return render_template("user_visits/new_country.html", user = user, visit = visit)
 
 @user_visits_blueprint.route("/users/<user_id>/visits/<visit_id>", methods=['POST'])
 def user_update_visit(user_id, visit_id):
@@ -81,16 +85,26 @@ def user_update_visit(user_id, visit_id):
     city = city_repo.select(city_id)
     if country.name == "New country":
         return user_new_country(user.id, visit.id)
+    if city.name == "New city":
+        return user_new_city(user.id, visit.id)
     visit = Visit(user, city, visit_id)
     visit_repo.update(visit)
+    return user_visits(user_id)
+
+@user_visits_blueprint.route("/users/<user_id>/visits/<visit_id>/cities", methods=['POST'])
+def user_create_city(user_id, visit_id):
+    # we probably don't need to pass the variables down here, i'll check later
+    visit = visit_repo.select(visit_id)
+    city = city_repo.select(visit.city.id)
+    city.name = request.form['city_name']
+    city_repo.update(city)
     return user_visits(user_id)
 
 @user_visits_blueprint.route("/users/<user_id>/visits/<visit_id>/cities/new")
 def user_new_city(user_id, visit_id):
     user = user_repo.select(user_id)
     visit = visit_repo.select(visit_id)
-    country = country_repo.select(visit.city.country.id) 
-    return render_template("user_visits/new_city.html", user = user, visit = visit, country = country)                   
+    return render_template("user_visits/new_city.html", user = user, visit = visit)                   
 
 
 @user_visits_blueprint.route("/users/<user_id>/visits/<visit_id>/countries", methods=['POST'])

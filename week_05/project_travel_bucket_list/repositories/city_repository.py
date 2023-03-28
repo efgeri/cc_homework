@@ -21,7 +21,7 @@ def select_all():
 
     for row in results:
         country = country_repo.select(row['country_id'])
-        city = City(row['name'], row['visit_date'], row['visited'], country, row['id'])
+        city = City(row['name'], row['visited'], country, row['visit_date'], row['id'])
         cities.append(city)
     return cities
 
@@ -33,7 +33,7 @@ def select(id):
     result = run_sql(sql, values)[0]
     if result is not None:
         country = country_repo.select(result['country_id'])
-        city = City(result['name'], result['visit_date'], result['visited'], country, result['id'])
+        city = City(result['name'], result['visited'], country, result['visit_date'], result['id'])
     return city
 
 def delete(id):
@@ -59,7 +59,7 @@ def cities_by_country(country):
     results = run_sql(sql, values)
 
     for row in results:
-        city = City(row['name'], row['visit_date'], row['visited'], country, row['id'])
+        city = City(row['name'], row['visited'], country, row['visit_date'], row['id'])
         cities.append(city)
     return cities
 

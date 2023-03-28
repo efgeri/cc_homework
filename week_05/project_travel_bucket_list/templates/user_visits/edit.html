@@ -8,17 +8,17 @@
 </ul>
 
 <form action="/users/{{ user.id }}/visits/{{ visit.id }}" method="post">
-  <!-- <label for="user">Select a user:</label>
-    <select name="user_id" id="user">
-      {% for user in all_users %}
-      <option value="{{ user.id }}"
-      {% if visit.user.id == user.id %} selected="selected"{% endif %}>
-      {{ user.name }}
-    </option>
+  <label for="country">Select a country:</label>
+    <select name="country_id" id="country">
+      {% for country in all_countries %}
+      <option value="{{ country.id }}"
+        {% if visit.city.country.id == country.id %} selected="selected"{% endif %}>
+        {{ country.name }}
+      </option>
       {% endfor %}
-    </select> -->
+    </select>
   
-  <label for="location">Select a city:</label>
+  <label for="city">Select a city:</label>
     <select name="city_id" id="city">
       {% for city in all_cities %}
       <option value="{{ city.id }}"
