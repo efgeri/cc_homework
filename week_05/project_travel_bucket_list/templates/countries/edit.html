@@ -4,6 +4,17 @@
 <h1>Edit a country</h1>
 
 <form action="/countries/{{country.id}}" method="post">
+
+  <label for="continent">Select a continent:</label>
+  <select name="continent_id" id="continent">
+    {% for continent in all_continents %}
+    <option value="{{ continent.id }}"
+      {% if country.continent.id == continent.id %} selected="selected"{% endif %}>
+      {{ continent.name }}
+    </option>
+    {% endfor %}
+  </select>
+
   <div>
     <label for="name">Name:</label>
     <input type="text" id="name" name="name" value="{{country.name}}" required autofocus>
