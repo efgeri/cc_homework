@@ -10,30 +10,16 @@
 </head>
 <body>
   <header>
-    <!-- <nav>
+    <nav>
       <ul class="menu">
         <li><a href="/">Home</a></li>
-        <li><a href="/continents">Continent list</a></li>
+        <li><a href="/users/{{ user.id }}/visits"">{{ user.name }} list</a></li>
+        <li><a href="/users/{{ user.id }}/visits/new"">Add a visit</a></li>
         <li><a href="/visits">Visit list</a></li>
         <li><a href="/visits/new">Add new visit</a></li>
         <li><a href="/users">Select user</a></li>
       </ul>
-    </nav> -->
-
-    <nav class="navbar">
-      <a href="/">Home</a>
-      <a href="#news">News</a>
-      <div class="dropdown">
-        <button class="dropbtn">Select a user
-          <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-content">
-          {% for user in all_users %}
-          <a href="/users/{{ user.id }}/visits">{{ user.name }}</a>
-          {% endfor %}
-        </div>
-      </div>
-  </nav>
+    </nav>
   </header>
   <div class="container">
     {% block content %}

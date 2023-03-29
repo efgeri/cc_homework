@@ -119,6 +119,7 @@ def user_update_visit(user_id, visit_id):
     city_id = request.form['city_id']
     country_id = request.form['country_id']
     date = request.form['visit_date']
+    visited = request.form['visited']
     visit = visit_repo.select(visit_id)
     user = user_repo.select(user_id)
     country = country_repo.select(country_id)
@@ -127,7 +128,7 @@ def user_update_visit(user_id, visit_id):
         return user_new_country(user.id, visit.id)
     if city.name == "New city":
         return user_new_city(user.id, visit.id)
-    visit = Visit(user, city, True, date, visit_id)
+    visit = Visit(user, city, visited, date, visit_id)
     visit_repo.update(visit)
     return user_visits(user_id)
 
