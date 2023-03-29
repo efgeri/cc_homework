@@ -45,7 +45,7 @@
             <i class="fa fa-caret-down"></i>
           </button>
           <div class="dropdown-content">
-            {% for user in all_users %}
+            {% for user in every_user %}
             <a href="/users/{{ user.id }}/visits">{{ user.name }}</a>
             {% endfor %}
           </div>

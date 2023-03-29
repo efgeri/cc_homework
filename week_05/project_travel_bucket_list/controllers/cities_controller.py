@@ -1,9 +1,9 @@
 from flask import Flask, render_template, request, redirect
 from models.city import City
-import pdb
 
 import repositories.city_repository as city_repo
 import repositories.country_repository as country_repo
+import repositories.user_repository as user_repo
 
 
 
@@ -18,12 +18,12 @@ cities_blueprint = Blueprint("cities", __name__)
 @cities_blueprint.route("/cities")
 def cities():
     cities = city_repo.select_all()
-    return render_template("cities/index.html", all_cities = cities)
+    return render_template("cities/index.html", all_cities = cities, every_user = user_repo.select_all())
 
 @cities_blueprint.route("/cities/new")
 def new_city():
     countries = country_repo.select_all()
-    return render_template("cities/new.html", all_countries = countries)
+    return render_template("cities/new.html", all_countries = countries, every_user = user_repo.select_all())
 
 @cities_blueprint.route("/cities", methods=['POST'])
 def create_city():
@@ -38,7 +38,7 @@ def create_city():
 def edit_city(id):
     countries = country_repo.select_all()
     selected_city = city_repo.select(id)
-    return render_template("cities/edit.html", city = selected_city, all_countries = countries)
+    return render_template("cities/edit.html", city = selected_city, all_countries = countries, every_user = user_repo.select_all())
 
 @cities_blueprint.route("/cities/<id>", methods=['POST'])
 def update_city(id):

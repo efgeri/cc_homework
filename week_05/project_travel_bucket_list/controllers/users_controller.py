@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, redirect, Blueprint
 from models.user import User
-import pdb
 
 import repositories.continent_repository as continent_repo
 import repositories.user_repository as user_repo
@@ -17,11 +16,11 @@ users_blueprint = Blueprint("users", __name__)
 def users():
     users = user_repo.select_all()
     # pdb.set_trace()
-    return render_template("users/index.html", all_users = users)
+    return render_template("users/index.html", all_users = users, every_user = user_repo.select_all())
 
 @users_blueprint.route("/users/new")
 def new_user():
-    return render_template("users/new.html")
+    return render_template("users/new.html", every_user = user_repo.select_all())
 
 @users_blueprint.route("/users", methods=['POST'])
 def create_user():
@@ -35,7 +34,7 @@ def create_user():
 @users_blueprint.route("/users/<id>/edit")
 def edit_user(id):
     selected_user = user_repo.select(id)
-    return render_template("users/edit.html", user = selected_user)
+    return render_template("users/edit.html", user = selected_user, every_user = user_repo.select_all())
 
 @users_blueprint.route("/users/<id>", methods=['POST'])
 def update_user(id):

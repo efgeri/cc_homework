@@ -20,6 +20,10 @@ visit_repo.delete_all()
 continent1 = Continent("Africa")
 continent2 = Continent("Europe")
 continent3 = Continent("Asia")
+continent4 = Continent("North America")
+continent5 = Continent("South America")
+continent6 = Continent("Australia")
+continent7 = Continent("Antarctica")
 
 
 country1 = Country("Egypt", continent1)
@@ -49,6 +53,10 @@ visit4 = Visit(user3, city1)
 continent_repo.save(continent1)
 continent_repo.save(continent2)
 continent_repo.save(continent3)
+continent_repo.save(continent4)
+continent_repo.save(continent5)
+continent_repo.save(continent6)
+continent_repo.save(continent7)
 
 country_repo.save(country1)
 country_repo.save(country2)
@@ -83,7 +91,7 @@ for continent in continent_list:
     print(f"{continent.name}")
 
 continent2.name = "European continent"
-continent_repo.update(continent2)
+# continent_repo.update(continent2)
 
 # continent_repo.delete(continent3.id)
 
@@ -96,7 +104,7 @@ for country in country_list:
     print(f"{country.name}")
 
 country2.name = "South Africa"
-country_repo.update(country2)
+# country_repo.update(country2)
 
 # country_repo.delete(country3.id)
 
@@ -131,7 +139,7 @@ for user in user_list:
     print(f"{user.username}")
 
 user2.username = "Traveller"
-user_repo.update(user2)
+# user_repo.update(user2)
 
 # user_repo.delete(user3.id)
 
@@ -156,6 +164,8 @@ for visit in visit_list:
 visit4.visit_date = "07/06/2011"
 visit4.visited = True
 visit4.user = user2
-visit_repo.update(visit4)
+
+every_user = user_repo.select_all()
+# visit_repo.update(visit4)
 
 # visit_repo.delete(visit3.id)    

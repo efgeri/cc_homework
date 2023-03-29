@@ -19,8 +19,8 @@ app.register_blueprint(cities_blueprint)
 
 @app.route('/')
 def home():
-    all_users = user_repo.select_all()
-    return render_template('index.html', all_users = all_users)
+    every_user = user_repo.select_all()
+    return render_template('index.html', every_user = every_user)
 
 if __name__ == '__main__':
     app.run(debug=True)

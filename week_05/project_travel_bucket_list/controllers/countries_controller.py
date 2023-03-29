@@ -1,11 +1,9 @@
 from flask import Flask, render_template, request, redirect
 from models.country import Country
-import pdb
 
 import repositories.continent_repository as continent_repo
 import repositories.country_repository as country_repo
 import repositories.user_repository as user_repo
-import repositories.city_repository as city_repo
 
 
 from flask import Blueprint
@@ -19,12 +17,12 @@ countries_blueprint = Blueprint("countries", __name__)
 @countries_blueprint.route("/countries")
 def countries():
     countries = country_repo.select_all()
-    return render_template("countries/index.html", all_countries = countries)
+    return render_template("countries/index.html", all_countries = countries, every_user = user_repo.select_all())
 
 @countries_blueprint.route("/countries/new")
 def new_country():
     continents = continent_repo.select_all()
-    return render_template("countries/new.html", all_continents = continents)
+    return render_template("countries/new.html", all_continents = continents, every_user = user_repo.select_all())
 
 @countries_blueprint.route("/countries", methods=['POST'])
 def create_country():
@@ -39,7 +37,7 @@ def create_country():
 def edit_country(id):
     continents = continent_repo.select_all()
     selected_country = country_repo.select(id)
-    return render_template("countries/edit.html", country = selected_country, all_continents = continents)
+    return render_template("countries/edit.html", country = selected_country, all_continents = continents, every_user = user_repo.select_all())
 
 @countries_blueprint.route("/countries/<id>", methods=['POST'])
 def update_country(id):

@@ -1,6 +1,5 @@
 from db.run_sql import run_sql
 import repositories.country_repository as country_repo
-# import pdb
 
 from models.city import City
 from models.user import User

@@ -4,12 +4,11 @@ import pdb
 
 import repositories.continent_repository as continent_repo
 import repositories.user_repository as user_repo
-import repositories.city_repository as city_repo
-
 
 from flask import Blueprint
 
 continents_blueprint = Blueprint("continents", __name__)
+every_user = user_repo.select_all()
 
 # RESTful CRUD Routes
 
@@ -18,11 +17,11 @@ continents_blueprint = Blueprint("continents", __name__)
 @continents_blueprint.route("/continents")
 def continents():
     continents = continent_repo.select_all()
-    return render_template("continents/index.html", all_continents = continents)
+    return render_template("continents/index.html", all_continents = continents, every_user = user_repo.select_all())
 
 @continents_blueprint.route("/continents/new")
 def new_continent():
-    return render_template("continents/new.html")
+    return render_template("continents/new.html", every_user = user_repo.select_all())
 
 @continents_blueprint.route("/continents", methods=['POST'])
 def create_continent():
@@ -35,7 +34,7 @@ def create_continent():
 @continents_blueprint.route("/continents/<id>/edit")
 def edit_continent(id):
     selected_continent = continent_repo.select(id)
-    return render_template("continents/edit.html", continent = selected_continent)
+    return render_template("continents/edit.html", continent = selected_continent, every_user = user_repo.select_all())
 
 @continents_blueprint.route("/continents/<id>", methods=['POST'])
 def update_continent(id):

@@ -10,6 +10,7 @@ import repositories.city_repository as city_repo
 from flask import Blueprint
 
 visits_blueprint = Blueprint("visits", __name__)
+every_user = user_repo.select_all()
 
 # RESTful CRUD Routes
 
@@ -19,13 +20,13 @@ visits_blueprint = Blueprint("visits", __name__)
 def visits():
     visits = visit_repo.select_all()
     # pdb.set_trace()
-    return render_template("visits/index.html", all_visits = visits)
+    return render_template("visits/index.html", all_visits = visits, every_user = user_repo.select_all())
 
 @visits_blueprint.route("/visits/new")
 def new_visit():
     users = user_repo.select_all()
     cities = city_repo.select_all()
-    return render_template("visits/new.html", all_users = users, all_cities = cities)
+    return render_template("visits/new.html", all_users = users, all_cities = cities, every_user = user_repo.select_all())
 
 @visits_blueprint.route("/visits", methods=['POST'])
 def create_visit():
@@ -43,7 +44,7 @@ def edit_visit(id):
     visit = visit_repo.select(id)
     users = user_repo.select_all()
     cities = city_repo.select_all()
-    return render_template("visits/edit.html", visit = visit, all_users = users, all_cities = cities)
+    return render_template("visits/edit.html", visit = visit, all_users = users, all_cities = cities, every_user = user_repo.select_all())
 
 @visits_blueprint.route("/visits/<id>", methods=['POST'])
 def update_visit(id):

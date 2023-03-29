@@ -4,7 +4,6 @@ from models.continent import Continent
 from models.country import Country
 from models.city import City
 from models.user import User
-import pdb
 
 import repositories.continent_repository as continent_repo
 import repositories.country_repository as country_repo
