@@ -3,15 +3,13 @@
 {% block content %}
 <h1>Visits</h1>
 
-<ul>
+<ul class="card-container">
   {% for visit in all_visits %}
   <li class="card">
-  <p><a href="/users/{{ user.id }}/visits/{{ visit.id }}/edit">{{ visit.city.name }}</a></p>
-    <p>
+    <a href="/users/{{ user.id }}/visits/{{ visit.id }}/edit">{{ visit.city.name }}</a>
       <form action="/users/{{ user.id }}/visits/{{ visit.id }}/delete" method="POST">
-      <input type="submit" value="delete" />
+      <input class ="btn--block" type="submit" value="delete" />
       </form>
-    </p>
   </li>
   {% endfor %}
 </ul>

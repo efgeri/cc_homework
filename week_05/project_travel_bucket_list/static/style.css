@@ -146,24 +146,37 @@ form {
   display: block;
 }
 
-ul {
+.card-container {
   display: flex;
-  justify-content: space-evenly;
+  flex: 1 1 auto;
+  justify-content: left;
   flex-wrap: wrap;
   list-style-type: none;
 }
 
 .card {
-  width: 200px;
-  height: fit-content;
+  width: 20%;
+  justify-content: space-evenly;
+  flex-direction: column;
   background-color: white;
-  border-radius: 4px;
-  margin-top: 8px;
-  margin-bottom: 5px;
+  border-radius: 10px;
+  margin: 10px;
   padding: 25px 25px 15px 25px;
   transition: 0.3s;
 }
 .card:hover {
   box-shadow: 5px 1px 20px 1px #ddd;
   transform: scale(0.96);
+}
+
+.btn--block {
+  display: block;
+  width: 100%;
+}
+
+@media (max-width: 600px) {
+  .card-container {
+    display: flex;
+    flex-direction: column;
+  }
 }
