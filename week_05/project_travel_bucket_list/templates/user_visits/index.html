@@ -3,10 +3,6 @@
 {% block content %}
 <h1>Visits</h1>
 
-<p class="btn--wrapper">
-  <a class="btn btn--action" href="/users/{{ user.id }}/visits/new">New visit</a>
-</p>
-
 <ul>
   {% for visit in all_visits %}
   <li>

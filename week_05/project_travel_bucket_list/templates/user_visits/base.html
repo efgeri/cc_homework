@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" crossorigin="anonymous"> <!-- NEW -->
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> <!-- NEW -->
-  <title>Travel Bucket List</title>
+  <title>{{ user.name }} List</title>
 </head>
 <body>
   <header>
-    <nav>
+    <!-- <nav>
       <ul class="menu">
         <li><a href="/">Home</a></li>
         <li><a href="/users/{{ user.id }}/visits"">{{ user.name }} list</a></li>
@@ -19,7 +19,13 @@
         <li><a href="/visits/new">Add new visit</a></li>
         <li><a href="/users">Select user</a></li>
       </ul>
+    </nav> -->
+    <nav class="navbar">
+      <a href="/users/{{user.id}}/visits">Your visits</a>
+      <a href="/users/{{user.id}}/visits/new">Add a visit</a>
+      <a href="/">Admin</a>
     </nav>
+
   </header>
   <div class="container">
     {% block content %}
