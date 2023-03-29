@@ -12,6 +12,12 @@ input, select, button {
   box-sizing: border-box;
 }
 
+input[type="date"],
+input[type="radio"],
+select {
+  margin-bottom: 10px;
+}
+
 /* .trash-button{
   display: contents;
   font-size: 65%;
@@ -140,8 +146,16 @@ form {
   display: block;
 }
 
+ul {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  list-style-type: none;
+}
+
 .card {
-  /* display: flex; */
+  width: 200px;
+  height: fit-content;
   background-color: white;
   border-radius: 4px;
   margin-top: 8px;
