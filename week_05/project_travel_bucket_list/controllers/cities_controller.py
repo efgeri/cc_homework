@@ -33,6 +33,12 @@ def create_city():
     city_repo.save(city)
     return redirect('/cities')
 
+@cities_blueprint.route("/cities/<id>/show")
+def show_city(id):
+    selected_city = city_repo.select(id)
+    visitors = city_repo.visited_by_user(selected_city)
+    return render_template("cities/show.html", visitors = visitors, city = selected_city, every_user = user_repo.select_all())
+
 
 @cities_blueprint.route("/cities/<id>/edit")
 def edit_city(id):

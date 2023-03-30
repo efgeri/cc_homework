@@ -42,7 +42,7 @@ def delete(id):
 def visited_cities(id):
     cities = []
 
-    sql = "SELECT cities.* FROM cities INNER JOIN visits ON visits.city_id = cities.id WHERE user_id = %s"
+    sql = "SELECT cities.* FROM cities INNER JOIN visits ON visits.city_id = cities.id AND visits.visited = 'False' WHERE user_id = %s"
     values = [id]
     results = run_sql(sql, values)
 

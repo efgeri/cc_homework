@@ -21,8 +21,22 @@ user_visits_blueprint = Blueprint("user_visits", __name__)
 @user_visits_blueprint.route("/users/<id>/visits")
 def user_visits(id):
     selected_user = user_repo.select(id)
-    visits = visit_repo.select_by_user(id)
+    visits = []
+    all_entries = visit_repo.select_by_user(id)
+    for entry in all_entries:
+        if entry.visited == True:
+            visits.append(entry)
     return render_template("user_visits/index.html", user = selected_user, all_visits = visits)
+
+@user_visits_blueprint.route("/users/<id>/wishlist")
+def user_wishlist(id):
+    selected_user = user_repo.select(id)
+    wishlist = []
+    all_entries = visit_repo.select_by_user(id)
+    for entry in all_entries:
+        if entry.visited == False:
+            wishlist.append(entry)
+    return render_template("user_visits/wishlist.html", user = selected_user, wishlist = wishlist)
 
 # 1
 @user_visits_blueprint.route("/users/<id>/visits/new")
@@ -151,3 +165,5 @@ def user_new_city(user_id, visit_id):
 def delete_visit(user_id, visit_id):
     visit_repo.delete(visit_id)
     return user_visits(user_id)
+
+

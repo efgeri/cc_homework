@@ -1,0 +1,18 @@
+{% extends 'user_visits/base.html' %}
+
+{% block content %}
+<h1>Wishlist</h1>
+
+<ul class="card-container">
+  {% for wish in wishlist %}
+  <li class="card">
+    <a href="/users/{{ user.id }}/visits/{{ wish.id }}/edit">{{ wish.city.name }}</a>
+      <form action="/users/{{ user.id }}/visits/{{ wish.id }}/delete" method="POST">
+      <input class ="btn--block" type="submit" value="delete" />
+      </form>
+  </li>
+  {% endfor %}
+</ul>
+
+
+{% endblock %}
