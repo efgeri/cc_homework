@@ -63,7 +63,7 @@ def user_create_visit(id):
     country_repo.save(country)
     city = City("New city", country)
     city_repo.save(city)
-    visit = Visit(user, city, True)
+    visit = Visit(user, city, False)
     visit_repo.save(visit)
     return user_edit_country(user.id, visit.id)
 
@@ -132,6 +132,8 @@ def user_update_visit(user_id, visit_id):
     city_id = request.form['city_id']
     country_id = request.form['country_id']
     date = request.form['visit_date']
+    if date == "":
+        date = None
     visited = request.form['visited']
     visit = visit_repo.select(visit_id)
     user = user_repo.select(user_id)

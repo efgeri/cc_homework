@@ -52,8 +52,9 @@ select {
 /* ha tul rovid a nev, egy sorba rakja a h1 h2-t */
 .container{
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
-  width: 300px;
+  width: 500px;
   margin: 0 auto;
 }
 

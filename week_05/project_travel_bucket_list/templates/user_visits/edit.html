@@ -11,10 +11,10 @@
   <label for="visit_date">When did you visit?</label>
   <input type="date" id="visit_date" name="visit_date" value="{{visit.visit_date}}">
 
-  <input type="radio" id="visited" name="visited" value="True" {% if visit.visited == True %} checked="checked"{% endif %}>
   <label for="visited">Already visited</label>
-  <input type="radio" id="wishlist" name="visited" value="False" {% if visit.visited == False %} checked="checked"{% endif %}>
+  <input type="radio" id="visited" name="visited" value="True" {% if visit.visited == True %} checked="checked"{% endif %}>
   <label for="wishlist">Wishlist</label>
+  <input type="radio" id="wishlist" name="visited" value="False" {% if visit.visited == False %} checked="checked"{% endif %}>
   <label for="country">Select a country:</label>
     <select name="country_id" id="country">
       {% for country in all_countries %}

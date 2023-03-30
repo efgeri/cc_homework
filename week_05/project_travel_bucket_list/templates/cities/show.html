@@ -3,11 +3,10 @@
 {% block content %}
 <h1> {{city.name}} </h1>
 
-<p><h3>Visited by:</h3></p>
-
 <p class="btn--wrapper">
-    <a href="/cities/{{ city.id }}/edit">{{ city.name }}</a>
+    <h2><a href="/cities/{{ city.id }}/edit">{{ city.name }}</a></h2>
   </p>
+  <h3>Visited by:</h3>
 <ul>
     {% for visitor in visitors  %}
     <li>{{visitor.username}}</li>
