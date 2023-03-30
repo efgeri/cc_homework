@@ -4,12 +4,13 @@
 <h1>Cities</h1>
 
 <p class="btn--wrapper">
-  <a class="btn btn--action" href="/cities/new">New city</a>
+  
 </p>
 
-<ul>
+<ul class="card-admin-container">
+  <a class="card-admin" href="/cities/new">New city</a>
   {% for city in all_cities %}
-  <li>
+  <li class="card-admin">
   <p><a href="/cities/{{ city.id }}/show">{{ city.name }}</a></p>
     <p>
       <form action="/cities/{{ city.id }}/delete" method="POST">

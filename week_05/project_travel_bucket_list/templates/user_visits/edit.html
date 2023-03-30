@@ -1,19 +1,16 @@
 {% extends 'user_visits/base.html' %}
 
 {% block content %}
-<h1>Edit a Visit</h1>
-<ul>
-  <li><h2>{{ user.name }}</h2></li>
-  <li><h3>{{ user.username }}</h3></li>
-</ul> 
+<h1>Your Visit in {{ visit.city.name }}</h1>
+  <h2>{{ user.name }}</h2>
 
 <form action="/users/{{ user.id }}/visits/{{ visit.id }}" method="post">
   <label for="visit_date">When did you visit?</label>
   <input type="date" id="visit_date" name="visit_date" value="{{visit.visit_date}}">
 
-  <label for="visited">Already visited</label>
-  <input type="radio" id="visited" name="visited" value="True" {% if visit.visited == True %} checked="checked"{% endif %}>
-  <label for="wishlist">Wishlist</label>
+  <label class="radio1" for="visited">Already visited</label>
+  <input type="radio" class="radio1" id="visited" name="visited" value="True" {% if visit.visited == True %} checked="checked"{% endif %}>
+  <label for="wishlist" id="wishlist">Wishlist</label>
   <input type="radio" id="wishlist" name="visited" value="False" {% if visit.visited == False %} checked="checked"{% endif %}>
   <label for="country">Select a country:</label>
     <select name="country_id" id="country">

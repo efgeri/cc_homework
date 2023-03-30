@@ -3,13 +3,11 @@
 {% block content %}
 <h1>Visits</h1>
 
-<p class="btn--wrapper">
-  <a class="btn btn--action" href="/visits/new">New visit</a>
-</p>
-
-<ul>
+ 
+<ul class="card-admin-container">
+  <a class="card-admin" href="/visits/new">New visit</a>
   {% for visit in all_visits %}
-  <li>
+  <li class="card-admin">
   <p><a href="/visits/{{ visit.id }}/edit">{{ visit.user.name }} - {{ visit.city.name }}</a></p>
     <p>
       <form action="/visits/{{ visit.id }}/delete" method="POST">

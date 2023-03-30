@@ -3,13 +3,9 @@
 {% block content %}
 <h1>Continents</h1>
 
-<p class="btn--wrapper">
-  <a class="btn btn--action" href="/continents/new">New continent</a>
-</p>
-
-<ul>
+<ul class="card-admin-container">
   {% for continent in all_continents %}
-  <li>
+  <li class="card-admin">
   <p><a href="/continents/{{ continent.id }}/edit">{{ continent.name }}</a></p>
     <p>
       <form action="/continents/{{ continent.id }}/delete" method="POST">

@@ -1,22 +1,31 @@
 body{
-  font-family: "Helvetica", arial, sans-serif; font-size: 16px;
-  background-color: #f5f5f5;
+  font-family: 'Arvo', serif;
+  font-size: large;
+  background: linear-gradient(90deg, #00d2ff 0%, #3a47d5 100%);
+}
+
+h1{
+  text-align: center;
+}
+
+h2{
+  text-align: center;
 }
 
 /* line controls over user inputs */
 input, select, button {
   font-size: 100%;
-  width : 100%;
+  width : 90%;
   padding: 10px;
   margin: 10px;
   box-sizing: border-box;
 }
-
-input[type="date"],
+/* input[type="date"],
 input[type="radio"],
 select {
   margin-bottom: 10px;
-}
+} */
+
 
 /* .trash-button{
   display: contents;
@@ -47,15 +56,23 @@ select {
   font-family: "Helvetica", arial, sans-serif; font-size: 14px;
 }
 
+
+
 /* ez hatarozza meg minden lista meretet */
 /* ez itt minden base html vegen van */
 /* ha tul rovid a nev, egy sorba rakja a h1 h2-t */
 .container{
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-around;
   flex-wrap: wrap;
   width: 500px;
   margin: 0 auto;
+}
+
+.list_page{
+  width: 90%;
+  margin: auto;
 }
 
 label {
@@ -68,9 +85,8 @@ form {
   background-color: #fff;
   padding: 20px;
   border-radius: 5px;
-  margin: 20px;
-  max-width: 500px;
-  margin: 0 auto;
+  margin: auto;
+  max-width: 300px;
 }
 
 
@@ -81,13 +97,14 @@ form {
   justify-content: space-evenly;
   overflow: hidden;
   background-color: #333;
-  font-family: Arial;
+  font-family: 'Arvo', serif;
+  align-items: center;
 }
 
 /* Links inside the navbar */
 .navbar a {
   float: left;
-  font-size: 16px;
+  font-size: 26px;
   color: white;
   text-align: center;
   padding: 14px 16px;
@@ -102,7 +119,7 @@ form {
 
 /* Dropdown button */
 .dropdown .dropbtn {
-  font-size: 16px;
+  font-size: 26px;
   border: none;
   outline: none;
   color: white;
@@ -155,8 +172,18 @@ form {
   list-style-type: none;
 }
 
+.card-admin-container {
+  display: flex;
+  flex-direction: row;
+  flex: 1 1 auto;
+  justify-content: left;
+  flex-wrap: wrap;
+  list-style-type: none;
+}
+
 .card {
   width: 20%;
+  text-align: center;
   justify-content: space-evenly;
   flex-direction: column;
   background-color: white;
@@ -165,14 +192,41 @@ form {
   padding: 25px 25px 15px 25px;
   transition: 0.3s;
 }
+
+
+.card-admin {
+  width: 20%;
+  text-align: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 10px;
+  margin: 10px;
+  padding: 25px 25px 15px 25px;
+  transition: 0.3s;
+}
+
+.card-admin li{
+  list-style: none;
+}
+
+.card a {
+  text-align: center;
+  color: #000000;
+}
+
 .card:hover {
+  box-shadow: 5px 1px 20px 1px #ddd;
+  transform: scale(0.96);
+}
+.card-admin:hover {
   box-shadow: 5px 1px 20px 1px #ddd;
   transform: scale(0.96);
 }
 
 .btn--block {
   display: block;
-  width: 100%;
+  width: 92%;
 }
 
 @media (max-width: 600px) {

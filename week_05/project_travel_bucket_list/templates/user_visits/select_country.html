@@ -1,7 +1,7 @@
 {% extends 'user_visits/base.html' %}
 
 {% block content %}
-<h1>Add a Visit COUNTRY PAGE</h1>
+<h1>Select a country, or create new</h1>
 <h2>{{ user.name }}</h2>
 
 <form action="/users/{{ user.id }}/visits/{{visit.id}}/countries/update" method="post">

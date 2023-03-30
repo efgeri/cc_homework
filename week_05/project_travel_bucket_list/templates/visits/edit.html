@@ -4,8 +4,8 @@
 <h1>Edit a Visit</h1>
 
 <form action="/visits/{{ visit.id }}" method="post">
-  <label for="user">Select a user:</label>
-    <select name="user_id" id="user">
+  <label  for="user">Select a user:</label>
+    <select class="card-admin" name="user_id" id="user">
       {% for user in all_users %}
       <option value="{{ user.id }}"
       {% if visit.user.id == user.id %} selected="selected"{% endif %}>
@@ -14,8 +14,8 @@
       {% endfor %}
     </select>
   
-  <label for="location">Select a city:</label>
-    <select name="city_id" id="city">
+  <label  for="location">Select a city:</label>
+    <select class="card-admin" name="city_id" id="city">
       {% for city in all_cities %}
       <option value="{{ city.id }}"
         {% if visit.city.id == city.id %} selected="selected"{% endif %}>
