@@ -7,22 +7,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Arvo&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" crossorigin="anonymous"> <!-- NEW -->
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> <!-- NEW -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
   <title>{{ user.name }}'s List</title>
 </head>
 <body>
   <header>
-    <!-- <nav>
-      <ul class="menu">
-        <li><a href="/">Home</a></li>
-        <li><a href="/users/{{ user.id }}/visits"">{{ user.name }} list</a></li>
-        <li><a href="/users/{{ user.id }}/visits/new"">Add a visit</a></li>
-        <li><a href="/visits">Visit list</a></li>
-        <li><a href="/visits/new">Add new visit</a></li>
-        <li><a href="/users">Select user</a></li>
-      </ul>
-    </nav> -->
     <nav class="navbar">
       <a href="/users/{{user.id}}/visits">Your visits</a>
       <a href="/users/{{user.id}}/wishlist">Your Wishlist</a>

@@ -7,6 +7,7 @@
   {% for visit in all_visits %}
   <li class="card">
     <a href="/users/{{ user.id }}/visits/{{ visit.id }}/edit">{{ visit.city.name }}</a>
+   <p>You visited this city on: {{ visit.visit_date }}</p>
       <form action="/users/{{ user.id }}/visits/{{ visit.id }}/delete" method="POST">
       <input class ="btn--block" type="submit" value="delete" />
       </form>
