@@ -52,8 +52,30 @@ Park.prototype.revenuePerYear = function(){
     return perYear * this.ticketPrice
 }
 
- 
+Park.prototype.removeSpecies = function(species){
+    const toRemove = this.sameSpecies(species)
+    for (dino of toRemove){
+        this.removeDino(dino)
+    }
+}
 
+Park.prototype.specificDiet = function(diet){
+    let count = 0
+    for (dino of this.dinosaurs){
+        if (dino.diet === diet){
+            count++
+        }
+    }
+    return count
+}
+
+Park.prototype.countDiets = function(){
+    let carnivores = this.specificDiet("carnivore")
+    let herbivores = this.specificDiet("herbivore")
+    let omnivores = this.specificDiet("omnivore")
+    const dietDict =  { 'carnivore': carnivores, 'herbivore': herbivores, 'omnivore': omnivores }
+    return dietDict
+}
 
 
 module.exports = Park

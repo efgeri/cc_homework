@@ -70,4 +70,19 @@ describe('Park', function() {
     assert.deepStrictEqual(actual, 2281250)
   });
 
+  it('should be able to remove all dinosaurs of a particular species', function(){
+    park.addDino(trex2)
+    park.addDino(stego)
+    park.removeSpecies("T-Rex")
+    const actual = park.dinosaurs.length
+    assert.deepStrictEqual(actual, 2)
+  });
+  
+  it('should be able to provide an object containing each of the diet types and the number of dinosaurs in the park of that diet type', function(){
+    park.addDino(stego)
+    const expected = { 'carnivore': 2, 'herbivore': 1, 'omnivore': 0 }
+    const actual = park.countDiets()
+    assert.deepStrictEqual(actual, expected)
+  });
+
 });
