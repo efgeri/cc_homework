@@ -15,7 +15,7 @@ Park.prototype.removeDino = function(dino){
 Park.prototype.mostPopular = function(){
     let popularity = 0
     let selectedDino
-    for (dino of this.dinosaurs){
+    for (const dino of this.dinosaurs){
         if (dino.guestsAttractedPerDay > popularity){
             popularity = dino.guestsAttractedPerDay
             selectedDino = dino
@@ -25,7 +25,7 @@ Park.prototype.mostPopular = function(){
 }
 
 Park.prototype.sameSpecies = function(species){
-    let dinoList = []
+    const dinoList = []
     for (dino of this.dinosaurs){
         if (dino.species === species){
             dinoList.push(dino)
@@ -36,7 +36,7 @@ Park.prototype.sameSpecies = function(species){
 
 Park.prototype.visitorsPerDay = function(){
     let total = 0
-    for (dino of this.dinosaurs){
+    for (const dino of this.dinosaurs){
         total += dino.guestsAttractedPerDay
     }
     return total
@@ -69,13 +69,27 @@ Park.prototype.specificDiet = function(diet){
     return count
 }
 
-Park.prototype.countDiets = function(){
-    let carnivores = this.specificDiet("carnivore")
-    let herbivores = this.specificDiet("herbivore")
-    let omnivores = this.specificDiet("omnivore")
-    const dietDict =  { 'carnivore': carnivores, 'herbivore': herbivores, 'omnivore': omnivores }
-    return dietDict
-}
+// Park.prototype.countDiets = function(){
+//     let carnivores = this.specificDiet("carnivore")
+//     let herbivores = this.specificDiet("herbivore")
+//     let omnivores = this.specificDiet("omnivore")
+//     const dietDict =  { 'carnivore': carnivores, 'herbivore': herbivores, 'omnivore': omnivores }
+//     return dietDict
+// }
 
+Park.prototype.countDiets = function(){
+    const numberOfDinosaursByDiet = {};
+  
+    for (const dino of this.dinosaurs) {
+      if (numberOfDinosaursByDiet[dino.diet]) {
+        numberOfDinosaursByDiet[dino.diet] += 1;
+      }
+      else {
+        numberOfDinosaursByDiet[dino.diet] = 1;
+      }
+    }
+  
+    return numberOfDinosaursByDiet;
+}
 
 module.exports = Park

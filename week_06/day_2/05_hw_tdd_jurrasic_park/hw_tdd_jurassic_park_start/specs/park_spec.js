@@ -9,11 +9,11 @@ describe('Park', function() {
   let raptor
   let stego
   beforeEach(function () {
-    park = new Park ("Jurassic Park", 25, [trex, raptor])
     trex = new Dinosaur("T-Rex", "carnivore", 100)
     trex2 = new Dinosaur("T-Rex", "carnivore", 99)
     raptor = new Dinosaur("Velociraptor", "carnivore", 150)
     stego = new Dinosaur("Stegosaurus", "herbivore", 2)
+    park = new Park ("Jurassic Park", 25, [trex, raptor])
   })
 
   it('should have a name', function(){
@@ -52,7 +52,8 @@ describe('Park', function() {
   it('should be able to find all dinosaurs of a particular species', function(){
     park.addDino(trex2)
     const actual = park.sameSpecies("T-Rex")
-    assert.deepStrictEqual(actual.length, 2)
+    const expected = [trex, trex2]
+    assert.deepStrictEqual(actual, expected)
   });
 
   it('should be able to calculate the total number of visitors per day', function(){
@@ -80,7 +81,7 @@ describe('Park', function() {
   
   it('should be able to provide an object containing each of the diet types and the number of dinosaurs in the park of that diet type', function(){
     park.addDino(stego)
-    const expected = { 'carnivore': 2, 'herbivore': 1, 'omnivore': 0 }
+    const expected = { 'carnivore': 2, 'herbivore': 1 }
     const actual = park.countDiets()
     assert.deepStrictEqual(actual, expected)
   });
