@@ -10,7 +10,7 @@ IsogramFinder.prototype.isIsogram = function () {
     return result
 }
 
-let isIsogram = (str) => str.split("").every((c, i) => str.indexOf(c) == i);
+// let isIsogram = (str) => str.split("").every((c, i) => str.indexOf(c) == i);
 
 
 module.exports = IsogramFinder;
