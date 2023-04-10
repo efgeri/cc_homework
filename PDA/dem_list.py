@@ -1,11 +1,8 @@
-hero_attributes = {
-    "Superman":"Over9k",
-    "Batman":3456,
-    "Flash":2967,
-    "Green Lantern":4563.2,
-    "Wonder Woman":5555
-}
+def powerlevel(list1, list2):
+    user_input = int(input("Type in a number between 1 and 5 "))
+    print(f"{list1[user_input - 1]}'s power level is level {list2[user_input - 1]}")
 
-user_input = (input("Type in a hero's name: "))
+heroes = ["Superman", "Batman", "Flash", "Green Lantern", "Wonder Woman"]
+level = ["Over9k", 3456, 2967, 4563.2, 5555]
 
-print(f"{user_input}'s power level is level {hero_attributes[user_input]}")
+powerlevel(heroes, level)
