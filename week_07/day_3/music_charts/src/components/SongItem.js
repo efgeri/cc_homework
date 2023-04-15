@@ -6,7 +6,7 @@ const SongItem = ({song}) => {
 //   // onCountryClicked(country)
 //  }
   console.log(song)
-  return <li>Author: {song["im:artist"]["label"]} ---> <strong>Album: {song["im:name"]["label"]}</strong> </li>
+  return <li>Author: {song["im:artist"]["label"]} --- <strong>Album: {song["im:name"]["label"]}</strong> </li>
 }
 
 export default SongItem;
