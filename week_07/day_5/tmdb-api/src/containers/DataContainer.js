@@ -8,7 +8,7 @@ const DataContainer = () => {
   const [decadeList, setDecadeList] = useState([]);
   const [filmCrewData, setFilmCrewData] = useState([]);
   const [selectedPerson, setSelectedPerson] = useState('');
-  const [personInfo, setPersonInfo] = useState({});
+  const [personInfo, setPersonInfo] = useState(null);
   const [counter, setCounter] = useState(0);
 
   useEffect(() => {
@@ -82,7 +82,7 @@ const DataContainer = () => {
       <h2>Most popular movies of the decade</h2>
       <ul>{decadeListItems}</ul>
       <PeopleList filmCrewData={filmCrewData} onPersonSelect={onPersonSelect}/>
-      {selectedPerson ? <PersonInfo person={selectedPerson} personInfo={personInfo}/> : null}
+      {personInfo ? <PersonInfo person={selectedPerson} personInfo={personInfo}/> : null}
     </div>
   );
 };
