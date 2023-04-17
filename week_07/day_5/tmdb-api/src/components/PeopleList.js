@@ -1,10 +1,9 @@
 import React from "react";
 import Person from "./Person";
 
-const PeopleList = ({ filmCrewData }) => {
-  console.log(filmCrewData)
-  const peopleListItems = filmCrewData.map((items) => {
-    return <Person items={items} />
+const PeopleList = ({ filmCrewData, onPersonSelect }) => {
+  const peopleListItems = filmCrewData.map((items, index) => {
+    return <Person items={items} key={index} onPersonSelect={onPersonSelect}/>
   })
 
   return (

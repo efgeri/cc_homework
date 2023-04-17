@@ -8,6 +8,7 @@ const DataContainer = () => {
   const [decadeList, setDecadeList] = useState([]);
   const [filmCrewData, setFilmCrewData] = useState([]);
   const [selectedPerson, setSelectedPerson] = useState('');
+  const [personInfo, setPersonInfo] = useState({});
   const [counter, setCounter] = useState(0);
 
   useEffect(() => {
@@ -45,8 +46,21 @@ const DataContainer = () => {
     setFilmCrewData(newCrewList);
   };
 
+  const loadSelectedPerson = function (person) {
+    fetch(
+      `https://api.themoviedb.org/3/person/${person.id}?api_key=${apikey}&language=en-US&append_to_response=credits`)
+      .then((res) => res.json())
+      .then((personInfo) => {
+        setPersonInfo(personInfo);
+      });
+      let copyCounter = counter
+      copyCounter ++
+      setCounter(copyCounter)
+  };
+
   const onPersonSelect = function(person) {
     setSelectedPerson(person)
+    loadSelectedPerson(person)
   } 
 
   const decadeListItems = decadeList.map((film) => {
@@ -67,8 +81,8 @@ const DataContainer = () => {
       <button onClick={() => {loadDecade(2020, 2023)}}>Load 2020s film crew</button>
       <h2>Most popular movies of the decade</h2>
       <ul>{decadeListItems}</ul>
-      <PeopleList filmCrewData={filmCrewData} />
-      <PersonInfo />
+      <PeopleList filmCrewData={filmCrewData} onPersonSelect={onPersonSelect}/>
+      {selectedPerson ? <PersonInfo person={selectedPerson} personInfo={personInfo}/> : null}
     </div>
   );
 };

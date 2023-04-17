@@ -1,10 +1,12 @@
 import React from "react";
 
-const Person = ({items}) => {
+const Person = ({items, onPersonSelect}) => {
+
+
+
     const getCostumePerson = items.map((person) => {
         if (person.job==="Costume Design") {
-            console.log(person.name)
-            return <li><button>{person.name}</button></li>
+            return <li><button onClick={() => {onPersonSelect(person)}}>{person.name}</button></li>
         }
     })
     
