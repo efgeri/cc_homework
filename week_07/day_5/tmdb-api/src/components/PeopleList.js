@@ -1,10 +1,18 @@
 import React from "react";
-import Person from "./person";
+import Person from "./Person";
 
-const PeopleList = () => {
-    return (
-        <h3>PeopleList </h3>
-    )
-}
+const PeopleList = ({ filmCrewData }) => {
+  console.log(filmCrewData)
+  const peopleListItems = filmCrewData.map((items) => {
+    return <Person items={items} />
+  })
 
-export default PeopleList
+  return (
+    <>
+      <h3>PeopleList </h3>
+      <ul>{peopleListItems}</ul>
+    </>
+  );
+};
+
+export default PeopleList;
