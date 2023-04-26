@@ -20,6 +20,20 @@ export const postSighting = (payload) => {
     })
 }
 
+export const updateSighting = (id, payload) => {
+    return fetch(baseURL + id, {
+        method: 'PUT',
+        body: JSON.stringify(payload),
+        headers: { 'Content-Type': 'application/json' }
+    })
+    .then(res => res.json())
+    .then(data => {
+      return data.acknowledged
+      
+    })
+}
+
+
 export const deleteSighting = (id) => {
     return fetch(baseURL + id, {
         method: 'DELETE'

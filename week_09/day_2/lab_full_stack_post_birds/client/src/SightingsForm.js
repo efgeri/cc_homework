@@ -1,13 +1,15 @@
 import {useState} from "react";
-import { postSighting } from "./SightingService";
+import { postSighting, updateSighting } from "./SightingService";
 
-const SightingsForm = ({addSighting}) => {
+const SightingsForm = ({addSighting, selectedBird}) => {
     
     const [formData, setFormData] = useState({
         species: "",
         location: "",
         date: "",
     })
+    
+
 
     const onChange = (e) =>{
         const newFormData = Object.assign({}, formData);
@@ -17,6 +19,9 @@ const SightingsForm = ({addSighting}) => {
 
     const onSubmit = (e) =>{
         e.preventDefault();
+        // if (selectedBird){
+        //     updateSighting(selectedBird._id, selectedBird)
+        // }
         postSighting(formData).then((data)=>{
             addSighting(data);
         })

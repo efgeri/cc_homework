@@ -9,6 +9,7 @@ import { getSightings } from "./SightingService";
 function App() {
 
   const [birdSightings, setBirdSightings] = useState([]);
+  const [currentBirdSightings, setCurrentBirdSightings] = useState({});
 
   useEffect(() => {
     getSightings().then((allSightings) => {
@@ -25,10 +26,17 @@ function App() {
     setBirdSightings(sightingsToKeep);
   }
 
+  const modifySighting = (id) => {
+    const sightingToChange = birdSightings.filter(sighting => sighting._id === id)
+    console.log(sightingToChange)  
+    setCurrentBirdSightings(sightingToChange[0])
+  }
+  console.log(currentBirdSightings)
+
   return (
     <>
-      <SightingsForm addSighting={addSighting} />
-      <SightingsGrid sightings={birdSightings} removeSighting={removeSighting} />
+      <SightingsForm addSighting={addSighting} selectedBird={currentBirdSightings}/>
+      <SightingsGrid sightings={birdSightings} removeSighting={removeSighting} modifySighting={modifySighting} />
     </>
   );
 }

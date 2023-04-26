@@ -1,12 +1,18 @@
-import { deleteSighting } from "./SightingService"
+import { deleteSighting, updateSighting } from "./SightingService"
 
-const SightingCard = ({sighting, removeSighting}) => {
-
-    console.log(sighting);
+const SightingCard = ({sighting, removeSighting, modifySighting}) => {
+    
     const handleDelete = () => {
         deleteSighting(sighting._id).then(()=>{
             removeSighting(sighting._id);
         })
+    }
+
+    const handleUpdate = () => {
+        modifySighting(sighting._id)
+        // updateSighting(sighting._id, ).then(()=>{
+        //     removeSighting(sighting._id);
+        // })
     }
     return (
         <>
@@ -14,6 +20,7 @@ const SightingCard = ({sighting, removeSighting}) => {
             <p>Location: {sighting.location}</p>
             <p>Date: {sighting.date}</p>
             <button onClick={handleDelete}> 🗑 </button>
+            <button onClick={handleUpdate}> Update </button>
             <hr></hr>
         </>
     )
