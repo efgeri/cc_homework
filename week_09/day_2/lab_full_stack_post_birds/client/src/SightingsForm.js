@@ -12,7 +12,7 @@ const SightingsForm = ({addSighting, selectedBird}) => {
 
 
     const onChange = (e) =>{
-        const newFormData = Object.assign({}, formData);
+        const newFormData = Object.assign({}, formData); // The same thing as {...formData}, spreading is the new way of writing this
         newFormData[e.target.name] = e.target.value;
         setFormData(newFormData);
     }
