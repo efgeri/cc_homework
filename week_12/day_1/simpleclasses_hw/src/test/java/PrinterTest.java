@@ -4,7 +4,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class PrinterTest {
-    Printer printer;
+    private Printer printer;
 
     @Before
     public void before(){
@@ -26,13 +26,13 @@ public class PrinterTest {
         assertEquals(500, printer.getSheets());
     }
     @Test
-    public void tooAllowRefusePrint(){
+    public void toAllowRefusePrint(){
         printer.print(10, 3);
         printer.print(3900, 3);
         assertEquals(470, printer.getSheets());
     }
     @Test
-    public void tooRefuseAllowPrint(){
+    public void toRefuseAllowPrint(){
         printer.print(3900, 3);
         printer.print(10, 4);
         assertEquals(460, printer.getSheets());

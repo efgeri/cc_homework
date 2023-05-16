@@ -4,7 +4,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class WaterBottleTest {
-    WaterBottle waterBottle;
+    private WaterBottle waterBottle;
 
     @Before
     public void before(){
@@ -39,6 +39,7 @@ public class WaterBottleTest {
     }
     @Test
     public void canFill(){
+        waterBottle.empty();
         waterBottle.fill();
         assertEquals(100, waterBottle.getVolume());
     }
