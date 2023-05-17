@@ -18,6 +18,16 @@ public class ManagerTest {
         assertEquals("Johnny Boy", manager.getName());
     }
     @Test
+    public void testNameCantBeNull() {
+        manager.nameChange(null);
+        assertEquals("Johnny Boy", manager.getName());
+    }
+    @Test
+    public void testNameChange() {
+        manager.nameChange("Yooooo");
+        assertEquals("Yooooo", manager.getName());
+    }
+    @Test
     public void testGetDeptName() {
         assertEquals("HR", manager.getDeptName());
     }
@@ -33,6 +43,11 @@ public class ManagerTest {
     public void testRaiseSalary() {
         manager.raiseSalary(10000.50);
         assertEquals(60000.50, manager.getSalary(), 0.00);
+    }
+    @Test
+    public void testCantRaiseSalary() {
+        manager.raiseSalary(-10292394.50);
+        assertEquals(50000.00, manager.getSalary(), 0.00);
     }
     @Test
     public void testPayBonus() {

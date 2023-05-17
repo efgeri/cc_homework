@@ -23,11 +23,19 @@ public abstract class Employee {
         return this.salary;
     }
     public void raiseSalary(double raise) {
-        this.salary += raise;
+        if (raise > 0) {
+            this.salary += raise;
+        }
     }
     public double payBonus() {
         return this.salary * 0.01;
     }
+    public void nameChange(String newName) {
+        if (newName!=null && !name.isEmpty()){
+            this.name = newName;
+        }
+    }
+
 
 
 }
