@@ -16,4 +16,8 @@ public enum Plane {
     public int getCapacity() {
         return capacity;
     }
+
+    public double getWeight() {
+        return weight;
+    }
 }

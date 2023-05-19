@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
 
-public class FlightTest {
+public class FlightManagerTest {
     Pilot pilot;
     CabinCrewMember fo;
     CabinCrewMember fa;
@@ -13,6 +13,7 @@ public class FlightTest {
     Passenger passenger;
     Flight flight;
     ArrayList<CabinCrewMember> cabinCrew;
+    FlightManager flightManager;
 
 
     @Before
@@ -27,27 +28,22 @@ public class FlightTest {
         cabinCrew.add(fa);
         cabinCrew.add(cad);
         flight = new Flight(pilot, cabinCrew, Plane.AIRBUSA320, "UA119", "EDI", "ORD", "19/05/2023 12:00");
-
+        flightManager = new FlightManager(flight);
     }
 
+    @Test
+    public void canGetTotalBagAllowance(){
+        assertEquals(31250.00, flightManager.totalBagWeightAllowance(), 0.00);
+    }
 
-   @Test
-    public void bookPassenger() {
+    @Test
+    public void canGetReservedBagWeight(){
         flight.bookPassenger(passenger);
-        assertEquals(1, flight.getPassengerList().size());
+        assertEquals(30, flightManager.totalBagWeight(), 0.00);
     }
     @Test
-    public void canGetAvailSeats() {
+    public void canGetRemainingWeight(){
         flight.bookPassenger(passenger);
-        assertEquals( 169, flight.getAvailSeats());
+        assertEquals(31220.00, flightManager.totalRemainingWeight(), 0.00);
     }
-    @Test
-    public void pilotCanFly() {
-        assertEquals( "Punch it!", pilot.fly());
-    }
-    @Test
-    public void crewCanRelay() {
-        assertEquals( "The captain's message is the following!", fo.relayMessage());
-    }
-
 }

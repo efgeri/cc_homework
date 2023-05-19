@@ -32,4 +32,8 @@ public class Flight {
     public ArrayList<Passenger> getPassengerList() {
         return passengerList;
     }
+
+    public Plane getPlane() {
+        return plane;
+    }
 }
