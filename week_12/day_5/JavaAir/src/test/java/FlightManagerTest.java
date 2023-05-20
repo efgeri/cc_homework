@@ -2,6 +2,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import static org.junit.Assert.assertEquals;
 
@@ -14,6 +15,7 @@ public class FlightManagerTest {
     Flight flight;
     ArrayList<CabinCrewMember> cabinCrew;
     FlightManager flightManager;
+    Calendar departure;
 
 
     @Before
@@ -21,13 +23,15 @@ public class FlightManagerTest {
         fo = new CabinCrewMember("Bob", Rank.FIRSTOFFICER);
         fa = new CabinCrewMember("Lisa", Rank.FLIGHTATTENDANT);
         cad = new CabinCrewMember("Roy", Rank.CADET);
-        pilot = new Pilot("Maverick", Rank.CAPTAIN, "ABC12345");
+        pilot = new Pilot("Maverick", "ABC12345");
         passenger = new Passenger("Tourist Johnny", 3);
         cabinCrew = new ArrayList<>();
         cabinCrew.add(fo);
         cabinCrew.add(fa);
         cabinCrew.add(cad);
-        flight = new Flight(pilot, cabinCrew, Plane.AIRBUSA320, "UA119", "EDI", "ORD", "19/05/2023 12:00");
+        departure = Calendar.getInstance();
+        departure.set(2023, Calendar.MAY, 19, 14, 33);
+        flight = new Flight(pilot, cabinCrew, Plane.AIRBUSA320, "UA119", "EDI", "ORD", departure);
         flightManager = new FlightManager(flight);
     }
 
