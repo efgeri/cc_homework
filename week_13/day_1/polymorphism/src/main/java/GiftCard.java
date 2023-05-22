@@ -4,4 +4,13 @@ public class GiftCard implements IChargeable{
     public GiftCard(double balance) {
         this.balance = balance;
     }
+
+    @Override
+    public void charge(double amount) {
+        this.balance -= amount;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
 }

@@ -1,35 +1,29 @@
-public abstract class PaymentCard {
+import java.util.ArrayList;
+
+public abstract class PaymentCard implements IChargeable{
    int cardNumber;
     String expiryDate;
     int securityNumber;
+    double availableCredit;
+    ArrayList<Double> transactionList;
 
     public PaymentCard(int cardNumber, String expiryDate, int securityNumber) {
         this.cardNumber = cardNumber;
         this.expiryDate = expiryDate;
         this.securityNumber = securityNumber;
+        this.transactionList = new ArrayList<>();
     }
 
     public int getCardNumber() {
         return cardNumber;
     }
 
-    public void setCardNumber(int cardNumber) {
-        this.cardNumber = cardNumber;
+    @Override
+    public void charge(double amount) {
+        this.transactionList.add(amount);
     }
 
-    public String getExpiryDate() {
-        return expiryDate;
-    }
-
-    public void setExpiryDate(String expiryDate) {
-        this.expiryDate = expiryDate;
-    }
-
-    public int getSecurityNumber() {
-        return securityNumber;
-    }
-
-    public void setSecurityNumber(int securityNumber) {
-        this.securityNumber = securityNumber;
+    public ArrayList<Double> getTransactionList() {
+        return transactionList;
     }
 }

@@ -1,4 +1,4 @@
-public class DebitCard extends PaymentCard implements IChargeable {
+public class DebitCard extends PaymentCard{
     int accountNumber;
     int sortCode;
 
