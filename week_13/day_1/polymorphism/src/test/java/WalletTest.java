@@ -29,6 +29,14 @@ public class WalletTest {
         wallet.addCard(capitalOne);
         wallet.addCard(virgin);
     }
+    @Test
+    public void canChargeWithPercentage(){
+        wallet.setSelectedCard(3);
+        wallet.pay(100);
+        wallet.pay(50);
+        CreditCard selected = (CreditCard) wallet.getSelectedCard();
+        assertEquals(1835.00, selected.getAvailableCredit(), 0.0);
+    }
 
     @Test
     public void hasCards(){
@@ -41,14 +49,6 @@ public class WalletTest {
         assertEquals(634466, selected.getCardNumber());
     }
 
-    @Test
-    public void canChargeWithPercentage(){
-        wallet.setSelectedCard(3);
-        wallet.pay(100);
-        wallet.pay(50);
-        CreditCard selected = (CreditCard) wallet.getSelectedCard();
-        assertEquals(1835.00, selected.getAvailableCredit(), 0.0);
-    }
 
     @Test
     public void canGetLogs(){

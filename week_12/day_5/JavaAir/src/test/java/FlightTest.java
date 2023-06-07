@@ -43,6 +43,10 @@ public class FlightTest {
         assertEquals(1, flight.getPassengerList().size());
     }
     @Test
+    public void canGetPassengerName() {
+        assertEquals("Tourist Johnny", passenger.getName());
+    }
+    @Test
     public void canGetAvailSeats() {
         flight.bookPassenger(passenger);
         assertEquals( 169, flight.getAvailSeats());
