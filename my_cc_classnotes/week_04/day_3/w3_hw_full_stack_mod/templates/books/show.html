@@ -1,0 +1,39 @@
+{% extends "base.html" %} {% block content %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <section class="book_view">
+        <div>
+    <ul>
+      <li>{{ book.title }}</li>
+      <li>{{ book.author }}</li>
+      <li>{{ book.genre }}</li>
+    </ul>
+</div>
+<div>
+  <p>  {% if book.checked_out %} This book is currently not in {% endif %}</p> {% if book.checked_out %}
+    <form action="/books/{{ index }}" method="post">
+      <input type="checkbox" id="checked_out" name="checked_out" value="True" />
+      <label for="checked_out"> Check back in</label><br />
+      <input id="submit" type="submit" value="Submit" />
+    </form>
+    </div>
+
+    {% else %}
+    {% if book.checked_out == False %} This book is available {% endif %}
+    <form action="/books/{{ index }}" method="post">
+      <input type="checkbox" id="checked_out" name="checked_out" value="True" />
+      <label for="checked_out"> Check out</label><br />
+      <input id="submit" type="submit" value="Submit" />
+    </form>
+</section>
+    {% endif %}
+  </body>
+</html>
+{% endblock %}

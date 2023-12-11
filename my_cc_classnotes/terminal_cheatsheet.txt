@@ -1,0 +1,10 @@
+ls     | List of files
+ls -a  | List all files, including hidden
+ls -l  | Shows items in folder with privilages, file size, etc.
+rm -r  | Remove directory and all files in it
+man    | Pulls up a manual of a command
+clear  | Clears terminal screen
+mkdir  | Make directory
+touch  | Create files
+cd     | Enter directory
+cd ..  | Go up in a directory

@@ -1,0 +1,58 @@
+body{
+    margin: 0;
+}
+
+.main-wrapper {
+    height: 100vh;
+    border: 1px solid blue
+}
+
+nav {
+    background-color: black;
+    height: 50px;
+    /* border: 1px solid red; */
+}
+nav > ul {
+    display: flex;
+    justify-content: space-around;
+}
+
+nav > ul > li > a {
+    color: antiquewhite;
+    display: flex;
+}
+
+li {
+    list-style: none;
+    margin-right: 10px;
+
+}
+
+.banner {
+    height: 200px;
+    background-color: #1d70b8;
+    padding: 10px;
+    color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.banner h1 {
+    margin: 0;
+}
+
+.popular-links {
+    display: flex;
+    justify-content: space-between;
+}
+
+.popular-links ul {
+    margin: 0;
+    padding: 0px;
+}
+
+#search-area {
+    display: flex;
+    align-items: center;
+}

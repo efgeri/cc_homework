@@ -1,0 +1,38 @@
+body {
+    margin: 0;
+    font-family: "Luminari";
+    /* font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif */
+
+}
+
+nav {
+    background-color: rgba(45, 85, 233, 0.42);
+    padding: 1rem;
+}
+
+nav > ul {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+nav > ul > li {
+    list-style: none;
+}
+
+.wrapper {
+    display: flex;
+    padding: 10px;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.card {
+    border: 1px solid grey;
+    border-radius: 5px;
+    padding: 10px;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    text-align: center;
+}

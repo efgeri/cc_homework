@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="task">
+    <div class="content">
+      {{selected_task.user.first_name}}
+      <div class="description">
+        {{selected_task.description}}
+        <span class="duration">{{selected_task.duration}} mins</span>
+      </div>
+      <div class="buttons">
+        {% if selected_task.completed == True %}
+          <i class="fa fa-check fa-2x" style="color:green" aria-hidden="true"></i>
+        {% else %}
+          <i class="fa fa-times fa-2x" aria-hidden="true"></i>
+        {% endif %}
+        <p><a href="/tasks/{{ selected_task.id }}/edit">Edit</a></p>
+      </div>
+      <p>      <form class="delete-form" action="/tasks/{{selected_task.id}}/delete" method="POST">
+        <button class="trash-button"><i class="fa fa-trash-o fa-3x" style="color:red" aria-hidden="true"></i></button>
+      </form></p>
+    </div> 
+    
+  </div>
+    
+{% endblock content %}
